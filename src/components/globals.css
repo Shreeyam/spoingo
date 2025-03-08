@@ -125,7 +125,38 @@
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
   }
+}
+
+html {
+  scrollbar-gutter: stable;
+}
+
+html body[data-scroll-locked] {
+  margin-right: 0 !important;
+}
+
+.prose {
+  max-width: unset;
+}
+
+.my-masonry-grid {
+  display: flex;
+  margin-left: -16px;
+  /* Adjust this value to set your gutter size */
+  width: auto;
+}
+
+.my-masonry-grid_column {
+  padding-left: 16px;
+  /* Same gutter size */
+  background-clip: padding-box;
+}
+
+/* Optional: Add bottom margin to grid items */
+.my-masonry-grid_column>div {
+  margin-bottom: 16px;
 }

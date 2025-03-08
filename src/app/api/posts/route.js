@@ -1,17 +1,17 @@
 // src/app/api/posts/route.js
 import { NextResponse } from 'next/server';
-import { createPost, getPosts, getPostsPaginated } from '@/lib/db';
+import { createPost, getPostsPaginated, getPosts } from '@/lib/db';
 
 export async function POST(request) {
     try {
         const body = await request.json();
-        const { title, slug, content, thumbnail, draft } = body;
+        const { title, slug, content, cover, draft } = body;
 
         if (!title || !content) {
             return NextResponse.json({ error: 'Missing title or content' }, { status: 400 });
         }
 
-        const postId = createPost({ title, slug, content, thumbnail, draft });
+        const postId = createPost({ title, slug, content, cover, draft });
         return NextResponse.json({ id: postId });
     } catch (error) {
         console.error('Error creating post:', error);

@@ -1,8 +1,9 @@
 import React from 'react';
+import ExtLink from '@/components/ui/externallink';
 
 export default function Biography() {
     return (
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-5xl mx-auto prose text-(--foreground)">
             {/* Header / Personal Information */}
             {/*             
             <header className="space-y-2">
@@ -23,16 +24,19 @@ export default function Biography() {
                     </a>
                 </p>
             </header> */}
-            Hey, I’m Shreeyam. I am a PhD candidate at MIT's Space Telecommunications, Astronomy and Radiation Laboratory with PI Prof. Kerri Cahoy. I work on autonomous systems, instrumentation, and machine learning applied to spacecraft. Currently I work on dynamic tasking formulations for Earth-observing satellites
+            Hey, I&apos;m Shreeyam. I am a PhD candidate at MIT&apos;s <ExtLink href="https://aeroastro.mit.edu/starlab/" target="_blank">Space Telecommunications, Astronomy and Radiation Laboratory</ExtLink> with PI Prof. Kerri Cahoy. I work on autonomous systems, instrumentation, and machine learning applied to spacecraft. Currently I work on dynamic tasking formulations for Earth-observing satellites funded by <ExtLink href="https://www.planet.com/" target="_blank">Planet Labs</ExtLink> so we can use existing satellites more effectively through improved perception, onboard planning, and edge computing.
             <br/>
             <br/>
-            I thrive at the cutting edge of technology, whether it’s optimizing spacecraft imaging schedules, testing machine learning algorithms in orbit, or developing new hardware for autonomous systems. Along the way, I’ve worked on free-space optical communications at Google [X], built flight electronics for rocketry teams, and published research on reinforcement-learned heuristics for satellite tasking.
+            I currently work at Planet Labs as an Edge Compute/Machine Learning Engineer. I have worked on Pelican&apos;s onboard compute system on the <ExtLink href="https://investors.planet.com/news/news-details/2024/Planet-Labs-PBC-Announces-Real-Time-Insights-Technology-Using-NVIDIA-Jetson-Platform/default.aspx">NVIDIA Jetson platform</ExtLink>, as the first employee on the Edge Compute team. My previous experience includes integrated photonics at <ExtLink href="https://x.company/" target="_blank">X, the moonshot factory</ExtLink> (formerly Google [x]), and I also led all onboard electronics development for <ExtLink href="https://imperialrocketry.com/" target="_blank">Imperial College London Rocketry</ExtLink>, and published research on reinforcement-learned heuristics for satellite tasking.
             <br/>
             <br/>
-            Outside of research, I enjoy tackling complex engineering challenges, automating anything that can be automated, and blending AI with aerospace in ways that push the limits of what’s possible. Always up for a discussion on spacecraft autonomy, deep learning, or the quirks of embedded computing!
+            I started this blog for technical sewing projects. There are countless blogs from the early to mid 2010s that have been invaluable to my sewing journey, and I hope to contribute to that body of knowledge. I might occasionally write about fashion, research, or other topics also.
             <br/>
-            
+            <br/>   
+            I wrote this blog platform called <ExtLink href="https://www.github.com/Shreeyam/spungio">Spoingo</ExtLink>. I also host a tree-based productivity software called <ExtLink href="https://treetrack.shreey.am/">Treetrack</ExtLink>.
             <br/>
+            <br/>
+            Contact: shreeyam [at] mit [dot] edu
         </div>
     );
 }

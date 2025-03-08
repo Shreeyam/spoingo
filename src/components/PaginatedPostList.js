@@ -6,12 +6,12 @@ import PostList from '@/components/PostList';
 import { Button } from '@/components/ui/button';
 import { ChevronDown, LoaderCircle } from 'lucide-react';
 
-export default function PaginatedPostList({ initialPosts }) {
+export default function PaginatedPostList({ initialPosts, galleryMode}) {
     const [posts, setPosts] = useState(initialPosts || []);
     const [offset, setOffset] = useState(initialPosts.length);
-    const [hasMore, setHasMore] = useState(initialPosts.length === 5);
+    const [hasMore, setHasMore] = useState(initialPosts.length === 10);
     const [loading, setLoading] = useState(false);
-    const limit = 5;
+    const limit = 10;
 
     async function loadPosts() {
         setLoading(true);
@@ -27,7 +27,7 @@ export default function PaginatedPostList({ initialPosts }) {
 
     return (
         <div>
-            <PostList posts={posts} />
+            <PostList posts={posts} galleryMode={galleryMode} />
             <div className="flex justify-center">
                 {hasMore && (
                     <Button

@@ -5,7 +5,7 @@ import { getPostById, getPostBySlug } from '@/lib/db';
 import ReactMarkdown from 'react-markdown';
 import Image from 'next/image';
 import Layout from '@/components/Layout';
-import { Calendar, Clock, User, Tag, Share2, Bookmark, Heart, MessageSquare } from 'lucide-react';
+import { Dot, Clock, User, Tag, Share2, Bookmark, Heart, MessageSquare } from 'lucide-react';
 import { formatDistanceToNow } from 'date-fns';
 import CustomMarkdown from '@/components/ui/custommarkdown';
 
@@ -31,14 +31,13 @@ export default async function PostPage({ params }) {
     }
 
     // Format date (assuming post has a publishedAt field)
-    console.log(post.created_at)
     const publishedDate = post.created_at ? new Date(post.created_at) : new Date();
-    const formattedDate = publishedDate.toLocaleDateString('en-US', {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric'
-    });
-    const timeAgo = formatDistanceToNow(publishedDate, { addSuffix: true });
+    // const formattedDate = publishedDate.toLocaleDateString('en-US', {
+    //     year: 'numeric',
+    //     month: 'long',
+    //     day: 'numeric'
+    // });
+    // const timeAgo = formatDistanceToNow(publishedDate, { addSuffix: true });
 
     // Estimate reading time (assuming post has content)
     const wordCount = post.content ? post.content.split(/\s+/).length : 0;
@@ -46,12 +45,12 @@ export default async function PostPage({ params }) {
 
     return (
         <Layout>
-            <div className="max-w-4xl mx-auto px-4 py-8">
-                {/* Hero section with featured image */}
-                {post.thumbnail && (
+            <div className="max-w-5xl mx-auto px-4 py-8">
+                {/* Hero section with featured image
+                {post.cover && (
                     <div className="relative w-full h-96 mb-8 overflow-hidden rounded-2xl shadow-lg">
                         <Image
-                            src={post.thumbnail}
+                            src={post.cover}
                             alt={post.title}
                             fill
                             priority
@@ -67,7 +66,7 @@ export default async function PostPage({ params }) {
                             )}
                         </div>
                     </div>
-                )}
+                )} */}
 
                 {/* Title and meta section */}
                 <div className="mb-8 text-center">
@@ -80,11 +79,8 @@ export default async function PostPage({ params }) {
                             </div>
                         )}
                         <div className="flex items-center">
-                            <Calendar size={16} className="mr-1" />
-                            <span title={formattedDate}>{timeAgo}</span>
-                        </div>
-                        <div className="flex items-center">
-                            <Clock size={16} className="mr-1" />
+                            <span title={publishedDate}>{publishedDate.toISOString().split("T")[0]}</span>
+                            <Dot size={16} className="mx-1" />
                             <span>{readingTime} min read</span>
                         </div>
                     </div>

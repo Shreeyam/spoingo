@@ -4,11 +4,12 @@ import PaginatedPostList from '@/components/PaginatedPostList';
 import AuthorFilled from '@/components/AuthorFilled';
 import Biography from '@/components/Biography';
 import { Separator } from '@/components/ui/separator';
-import { getPosts, getPostsPaginated } from '@/lib/db';
+import { getPosts } from '@/lib/db';
+import CV from '@/components/CV';
 
-export default async function HomePage() {
+export default async function About() {
     // Await the asynchronous call to getPosts.
-    const initialPosts = await getPostsPaginated();
+    const initialPosts = await getPosts();
 
     return (
         <Layout>
@@ -21,9 +22,8 @@ export default async function HomePage() {
                     {/* Posts take up three columns */}
                     <div className="md:col-span-3">
                         <Biography />
-                        <Separator className="my-2" />
-                        <h1 className="text-3xl font-bold mb-4">Latest Posts</h1>
-                        <PaginatedPostList initialPosts={initialPosts} galleryMode={false} />
+                        <Separator className="my-2"/>
+                        <CV/>
                     </div>
                 </div>
             </div>
