@@ -24,7 +24,7 @@ export default function ImageSelector({ value, onChange, title = "Select Image" 
         if (isOpen && images === null) {
             fetchImages();
         }
-    }, [isOpen]);
+    }, [isOpen, images]);
 
     const fetchImages = async () => {
         setIsLoading(true);

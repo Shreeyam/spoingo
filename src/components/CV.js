@@ -272,7 +272,7 @@ export default function CV() {
                         <ul className="list-disc list-outside ml-5 space-y-2 text-gray-700">
                             <li>Worked as a full stack software developer intern writing C# across teams managed under agile methodology.</li>
                             <li>Automated part of the workflow for business analysts using Python, saving tens of hours on importing old functional specifications into JIRA.</li>
-                            <li>Described by the Chief Architect as a "Senior Software Developer disguised as an Intern."</li>
+                            <li>Described by the Chief Architect as a &quot;Senior Software Developer disguised as an Intern.&quot;</li>
                         </ul>
                     </div>
                 </div>

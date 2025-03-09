@@ -18,13 +18,14 @@ export default function PostSelector({ onSelectPost, onCreateNew, className }) {
     const [searchTerm, setSearchTerm] = useState('');
     const [isLoading, setIsLoading] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
+    const [fetched, setFetched] = useState(false);
 
     // Fetch posts when popover opens
     useEffect(() => {
-        if (isOpen && posts.length === 0) {
+        if (isOpen && !fetched) {
             fetchPosts();
         }
-    }, [isOpen]);
+    }, [isOpen, fetched]);
 
     const fetchPosts = async () => {
         setIsLoading(true);
@@ -33,6 +34,7 @@ export default function PostSelector({ onSelectPost, onCreateNew, className }) {
             if (response.ok) {
                 const data = await response.json();
                 setPosts(data);
+                setFetched(true);
             }
         } catch (error) {
             console.error('Error fetching posts:', error);
