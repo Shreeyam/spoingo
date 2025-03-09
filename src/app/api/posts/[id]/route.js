@@ -1,6 +1,6 @@
 // src/app/api/posts/[id]/route.js
 import { NextResponse } from 'next/server';
-import { getPostById, updatePost } from '@/lib/db';
+import { getPostById, updatePost, deletePost } from '@/lib/db';
 
 export async function GET(request, { params }) {
     try {

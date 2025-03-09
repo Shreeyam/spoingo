@@ -4,7 +4,8 @@ import PaginatedPostList from '@/components/PaginatedPostList';
 import AuthorFilled from '@/components/AuthorFilled';
 import Biography from '@/components/Biography';
 import { Separator } from '@/components/ui/separator';
-import { getPosts, getPostsPaginated } from '@/lib/db';
+import { getPostsPaginated } from '@/lib/db';
+export const revalidate = 60;
 
 export default async function HomePage() {
     // Await the asynchronous call to getPosts.
