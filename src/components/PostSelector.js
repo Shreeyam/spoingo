@@ -9,7 +9,6 @@ import {
     SelectValue
 } from '@/components/ui/select';
 import { Input } from '@/components/ui/input';
-import { Button } from '@/components/ui/button';
 import { Search, Plus, FileText } from 'lucide-react';
 import { ScrollArea } from '@/components/ui/scroll-area';
 
@@ -58,7 +57,7 @@ export default function PostSelector({ onSelectPost, onCreateNew, className }) {
 
     return (
         <div className={`space-y-2 ${className}`}>
-            <Select onValueChange={handleSelect} onOpenChange={setIsOpen} >
+            <Select onValueChange={handleSelect} onOpenChange={setIsOpen} defaultValue="new">
                 <SelectTrigger className="w-full cursor-pointer flex flex-grow">
                     <SelectValue placeholder="Select a post to edit" />
                 </SelectTrigger>

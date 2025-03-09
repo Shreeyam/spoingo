@@ -3,6 +3,7 @@ import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from '@/components/ui/carousel';
 import { ExternalLink } from 'lucide-react';
+import SafeImage from '@/components/SafeImage';
 
 const CustomMarkdown = ({ markdown }) => {
     return (
@@ -12,7 +13,9 @@ const CustomMarkdown = ({ markdown }) => {
                 // Custom renderer for anchor tags.
                 a: ({ node, children, ...props }) => (
                     <a {...props}>
-                        {!node.properties.href.startsWith('/') ? <ExternalLink size={16} className="ml-1 inline" /> : null}
+                        {!node.properties.href.startsWith('/') ? (
+                            <ExternalLink size={16} className="ml-1 inline" />
+                        ) : null}
                         {children}
                     </a>
                 ),
@@ -44,14 +47,14 @@ const CustomMarkdown = ({ markdown }) => {
                                 alt: img.alt.replace('gallery:', '').trim()
                             }));
                             return (
-                                <Carousel className="w-full">
-                                    <CarouselContent>
+                                <Carousel className="w-full h-full">
+                                    <CarouselContent className="h-full">
                                         {formattedImages.map((img, idx) => (
-                                            <CarouselItem key={idx}>
-                                                <Image
+                                            <CarouselItem key={idx} className="h-[550px] flex items-center justify-center">
+                                                <img
                                                     src={img.src}
                                                     alt={img.alt}
-                                                    className="object-cover w-full h-auto"
+                                                    className="object-cover object-center h-full"
                                                 />
                                             </CarouselItem>
                                         ))}
@@ -59,6 +62,8 @@ const CustomMarkdown = ({ markdown }) => {
                                     <CarouselPrevious />
                                     <CarouselNext />
                                 </Carousel>
+
+
                             );
                         }
                         if (isFlex) {
@@ -67,10 +72,10 @@ const CustomMarkdown = ({ markdown }) => {
                                 alt: img.alt.replace('flex:', '').trim()
                             }));
                             return (
-                                <div className="flex space-x-4">
+                                <div className="flex space-x-4 items-center">
                                     {formattedImages.map((img, idx) => (
                                         <div key={idx} className="flex-1">
-                                            <Image src={img.src} alt={img.alt} />
+                                            <img src={img.src} alt={img.alt} className="mx-auto" />
                                         </div>
                                     ))}
                                 </div>
@@ -81,9 +86,14 @@ const CustomMarkdown = ({ markdown }) => {
                     // Fallback: render as a normal paragraph.
                     return <p>{children}</p>;
                 },
-                // Optionally, override the image renderer for consistent styling.
+                // Override the image renderer for standalone images.
                 img: ({ node, ...props }) => (
-                    <Image {...props} alt={props.alt} />
+                    <img
+                        {...props}
+                        alt={props.alt}
+                        style={{ objectFit: 'contain' }}
+                        className="mx-auto max-h-[550px]"
+                    />
                 )
             }}
         >

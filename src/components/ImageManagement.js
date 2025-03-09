@@ -11,8 +11,7 @@ import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Label } from '@/components/ui/label';
-import { Search, UploadCloud, Trash2, Edit2, Check, X, RefreshCw } from 'lucide-react';
-// import { debounce } from 'lodash';
+import { Search, UploadCloud, Trash2, Edit2, Check, X, RefreshCw, Copy } from 'lucide-react';
 
 export default function ImageManagement({ onSelectImage, showSelectOption = false }) {
     const [images, setImages] = useState([]);
@@ -191,7 +190,7 @@ export default function ImageManagement({ onSelectImage, showSelectOption = fals
                         </div>
                         <div className="relative">
                             <Button variant="default" onClick={() => document.getElementById('image-upload').click()}>
-                                <UploadCloud className="mr-2" size={16}  /> Upload
+                                <UploadCloud className="mr-2" size={16} /> Upload
                             </Button>
                             <input
                                 id="image-upload"
@@ -202,7 +201,7 @@ export default function ImageManagement({ onSelectImage, showSelectOption = fals
                             />
                         </div>
                         <Button variant="ghost" onClick={fetchImages}>
-                            <RefreshCw size={16}  />
+                            <RefreshCw size={16} />
                         </Button>
                     </div>
                 </div>
@@ -243,7 +242,9 @@ export default function ImageManagement({ onSelectImage, showSelectOption = fals
                                             />
                                         </div>
                                         <p className="mt-2 text-sm font-medium truncate">{image.name}</p>
-                                        <p className="text-xs text-gray-500">{new Date(image.uploadedAt).toLocaleDateString()}</p>
+                                        <p className="text-xs text-gray-500">
+                                            {new Date(image.uploadedAt).toISOString().split('T')[0]}
+                                        </p>
                                     </CardContent>
                                 </Card>
                             ))}
@@ -289,8 +290,12 @@ export default function ImageManagement({ onSelectImage, showSelectOption = fals
                                                 </div>
                                             </td>
                                             <td className="p-3">{image.name}</td>
-                                            <td className="p-3">{new Date(image.uploadedAt).toLocaleDateString()}</td>
-                                            <td className="p-3">{image.size ? `${Math.round(image.size / 1024)} KB` : 'Unknown'}</td>
+                                            <td className="p-3">
+                                                {new Date(image.uploadedAt).toISOString().split('T')[0]}
+                                            </td>
+                                            <td className="p-3">
+                                                {image.size ? `${Math.round(image.size / 1024)} KB` : 'Unknown'}
+                                            </td>
                                         </tr>
                                     ))}
                                 </tbody>
@@ -323,15 +328,28 @@ export default function ImageManagement({ onSelectImage, showSelectOption = fals
                                 </div>
                                 <div className="flex justify-between">
                                     <p className="font-medium">Uploaded:</p>
-                                    <p>{new Date(selectedImage.uploadedAt).toLocaleString()}</p>
+                                    <p>
+                                        {new Date(selectedImage.uploadedAt).toISOString().split('T')[0]}
+                                    </p>
                                 </div>
                                 <div className="flex justify-between">
                                     <p className="font-medium">Size:</p>
-                                    <p>{selectedImage.size ? `${Math.round(selectedImage.size / 1024)} KB` : 'Unknown'}</p>
+                                    <p>
+                                        {selectedImage.size ? `${Math.round(selectedImage.size / 1024)} KB` : 'Unknown'}
+                                    </p>
                                 </div>
-                                <div className="flex justify-between">
+                                <div className="flex justify-between items-center">
                                     <p className="font-medium">URL:</p>
-                                    <p className="truncate max-w-[200px]">{selectedImage.url}</p>
+                                    <div className="flex items-center space-x-2">
+                                        <p className="truncate max-w-[200px]">{selectedImage.url}</p>
+                                        <Button
+                                            variant="outline"
+                                            size="icon"
+                                            onClick={() => navigator.clipboard.writeText(selectedImage.url)}
+                                        >
+                                            <Copy size={16} />
+                                        </Button>
+                                    </div>
                                 </div>
                             </div>
                             <DialogFooter className="flex justify-end">
@@ -344,10 +362,12 @@ export default function ImageManagement({ onSelectImage, showSelectOption = fals
                                     </Button>
                                 </div>
                                 {showSelectOption && (
-                                    <Button onClick={() => {
-                                        onSelectImage(selectedImage);
-                                        setDialogOpen(false);
-                                    }}>
+                                    <Button
+                                        onClick={() => {
+                                            onSelectImage(selectedImage);
+                                            setDialogOpen(false);
+                                        }}
+                                    >
                                         <Check size={16} /> Select Image
                                     </Button>
                                 )}
@@ -444,7 +464,7 @@ export function ImageSelector({ onSelectImage, value }) {
                             onSelectImage(null);
                         }}
                     >
-                        <X size={16}  />
+                        <X size={16} />
                     </Button>
                 )}
             </div>

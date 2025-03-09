@@ -1,8 +1,6 @@
 "use client";
 
 import React, { useState, useRef } from 'react';
-import ReactMarkdown from 'react-markdown';
-import remarkGfm from 'remark-gfm';
 import slugify from 'slugify';
 // Shadcn-inspired UI components
 import { Button } from '@/components/ui/button';
@@ -13,7 +11,7 @@ import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover
 import CustomMarkdown from '@/components/ui/custommarkdown';
 import Image from 'next/image';
 // Lucide icons
-import { UploadCloud, Eye, EyeOff, Send, HelpCircle, Save, FilePlus2 } from 'lucide-react';
+import { UploadCloud, Eye, EyeOff, Send, HelpCircle, Save, FilePlus2, Trash2 } from 'lucide-react';
 // Custom components
 import ImageSelector from '@/components/ImageSelector';
 import PostSelector from '@/components/PostSelector';
@@ -31,6 +29,7 @@ export default function MarkdownEditor() {
     const [isEditing, setIsEditing] = useState(false);
 
     const fileInputRef = useRef(null);
+    const markdownTextareaRef = useRef(null);
 
     // Update title and slug (if not manually edited)
     const handleTitleChange = (e) => {
@@ -53,6 +52,7 @@ export default function MarkdownEditor() {
         try {
             const res = await fetch('/api/upload', {
                 method: 'POST',
+                credentials: 'include',
                 body: formData,
             });
             if (!res.ok) throw new Error('Upload failed');
@@ -84,11 +84,13 @@ export default function MarkdownEditor() {
         if (!post.draft) {
             const res = await fetch(`/api/posts/${post.id}`, {
                 method: 'GET',
+                credentials: 'include',
             });
-            
+
             if (!res.ok) throw new Error('Failed to fetch post');
             const fetchedPost = await res.json();
-            post = fetchedPost;}
+            post = fetchedPost;
+        }
 
         setTitle(post.title);
         setSlug(post.slug);
@@ -117,6 +119,7 @@ export default function MarkdownEditor() {
 
             const res = await fetch(endpoint, {
                 method,
+                credentials: 'include',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
                     title,
@@ -142,9 +145,41 @@ export default function MarkdownEditor() {
         }
     };
 
+    const handleDelete = async () => {
+        if (!currentPostId) return;
+        if (!confirm("Are you sure you want to delete this post?")) return;
+        try {
+            const res = await fetch(`/api/posts/${currentPostId}`, {
+                method: 'DELETE',
+                credentials: 'include'
+            });
+            if (!res.ok) throw new Error('Failed to delete post');
+            alert("Post deleted successfully!");
+            resetForm();
+        } catch (error) {
+            console.error("Error deleting post:", error);
+            alert("Error deleting post");
+        }
+    };
+
+    // Helper to insert markdown syntax (e.g. bold, underline, image)
+    const insertMarkdownSyntax = (prefix, suffix) => {
+        const textarea = markdownTextareaRef.current;
+        if (!textarea) return;
+        const start = textarea.selectionStart;
+        const end = textarea.selectionEnd;
+        const selectedText = markdown.substring(start, end);
+        const newText = markdown.substring(0, start) + prefix + selectedText + suffix + markdown.substring(end);
+        setMarkdown(newText);
+        setTimeout(() => {
+            textarea.focus();
+            textarea.selectionStart = start + prefix.length;
+            textarea.selectionEnd = end + prefix.length;
+        }, 0);
+    };
+
     return (
         <div className="min-h-screen flex flex-col p-6 bg-white dark:bg-gray-800">
-
             <div className="flex flex-grow">
                 {/* Left Panel: Editor */}
                 <div
@@ -251,11 +286,20 @@ export default function MarkdownEditor() {
                     </div>
                     {/* Content Editor */}
                     <div className="mb-4">
-                        <label htmlFor="markdown-content" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                        <label htmlFor="markdown-content" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                             Content
                         </label>
+                        {/* Markdown Toolbar */}
+                        <div className="flex gap-2 mb-2">
+                            <ImageSelector
+                                onChange={(x) => insertMarkdownSyntax(`![](${x})`, '')}
+                                title="Insert image"
+                                className="mb-2"
+                            />
+                        </div>
                         <Textarea
                             id="markdown-content"
+                            ref={markdownTextareaRef}
                             className="w-full h-80 p-3 mt-1 border rounded-md resize-none dark:bg-gray-700 dark:text-gray-100"
                             placeholder="Write your markdown content here..."
                             value={markdown}
@@ -290,28 +334,37 @@ export default function MarkdownEditor() {
                     </div>
                 )}
             </div>
-            {/* Submit Button */}
-            <div className="flex justify-end mt-4 gap-2">
-                {isEditing && (
-                    <Button onClick={resetForm} variant="outline">
-                        <FilePlus2 size={16} />New Post
-                    </Button>
-                )}
-                <Button onClick={handleSubmit} disabled={submitting}>
-                    {submitting ? 'Submitting...' : (
-                        <>
-                            {isEditing ? (
-                                <>
-                                    <Save size={16} /> Update Post
-                                </>
-                            ) : (
-                                <>
-                                    <Send size={16} /> Create Post
-                                </>
-                            )}
-                        </>
+            {/* Bottom Controls: Delete on Left, New/Create on Right */}
+            <div className="flex justify-between mt-4 gap-2">
+                <div>
+                    {isEditing && (
+                        <Button onClick={handleDelete} variant="destructive">
+                            <Trash2 size={16} /> Delete Post
+                        </Button>
                     )}
-                </Button>
+                </div>
+                <div className="flex gap-2">
+                    {isEditing && (
+                        <Button onClick={resetForm} variant="outline">
+                            <FilePlus2 size={16} /> New Post
+                        </Button>
+                    )}
+                    <Button onClick={handleSubmit} disabled={submitting}>
+                        {submitting ? 'Submitting...' : (
+                            <>
+                                {isEditing ? (
+                                    <>
+                                        <Save size={16} /> Update Post
+                                    </>
+                                ) : (
+                                    <>
+                                        <Send size={16} /> Create Post
+                                    </>
+                                )}
+                            </>
+                        )}
+                    </Button>
+                </div>
             </div>
         </div>
     );

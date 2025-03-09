@@ -1,13 +1,12 @@
-// src/app/post/[id]/page.jsx
 import React from 'react';
 import { notFound } from 'next/navigation';
-import { getPostById, getPostBySlug } from '@/lib/db';
-import ReactMarkdown from 'react-markdown';
-import Image from 'next/image';
+import Link from 'next/link';
+import { getPostById, getPostBySlug, getPreviousPost, getNextPost } from '@/lib/db';
 import Layout from '@/components/Layout';
-import { Dot, Clock, User, Tag, Share2, Bookmark, Heart, MessageSquare } from 'lucide-react';
-import { formatDistanceToNow } from 'date-fns';
+import { Dot, User, MoveLeft, MoveRight } from 'lucide-react';
 import CustomMarkdown from '@/components/ui/custommarkdown';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent } from '@/components/ui/card';
 
 export default async function PostPage({ params }) {
     const { idorslug } = await params; // assuming idorslug is an array
@@ -30,43 +29,17 @@ export default async function PostPage({ params }) {
         notFound();
     }
 
-    // Format date (assuming post has a publishedAt field)
-    const publishedDate = post.created_at ? new Date(post.created_at) : new Date();
-    // const formattedDate = publishedDate.toLocaleDateString('en-US', {
-    //     year: 'numeric',
-    //     month: 'long',
-    //     day: 'numeric'
-    // });
-    // const timeAgo = formatDistanceToNow(publishedDate, { addSuffix: true });
+    // Get previous and next posts
+    const prevPost = { id: post.id - 1 }
+    const nextPost = { id: post.id + 1 }
 
-    // Estimate reading time (assuming post has content)
+    const publishedDate = post.created_at ? new Date(post.created_at) : new Date();
     const wordCount = post.content ? post.content.split(/\s+/).length : 0;
     const readingTime = Math.max(1, Math.round(wordCount / 200)); // Assuming 200 words per minute
 
     return (
         <Layout>
             <div className="max-w-5xl mx-auto px-4 py-8">
-                {/* Hero section with featured image
-                {post.cover && (
-                    <div className="relative w-full h-96 mb-8 overflow-hidden rounded-2xl shadow-lg">
-                        <Image
-                            src={post.cover}
-                            alt={post.title}
-                            fill
-                            priority
-                            className="object-cover"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                        <div className="absolute bottom-0 left-0 p-6 text-white">
-                            {post.category && (
-                                <span className="inline-flex items-center px-3 py-1 text-sm font-medium rounded-full bg-indigo-500 text-white mb-3">
-                                    <Tag size={14} className="mr-1" />
-                                    {post.category}
-                                </span>
-                            )}
-                        </div>
-                    </div>
-                )} */}
 
                 {/* Title and meta section */}
                 <div className="mb-8 text-center">
@@ -86,26 +59,39 @@ export default async function PostPage({ params }) {
                     </div>
                 </div>
 
-                {/* Social sharing and actions */}
-                {/* <div className="flex justify-center space-x-4 mb-8">
-                    <button className="p-2 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors">
-                        <Share2 size={18} className="text-gray-700" />
-                    </button>
-                    <button className="p-2 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors">
-                        <Bookmark size={18} className="text-gray-700" />
-                    </button>
-                    <button className="p-2 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors">
-                        <Heart size={18} className="text-gray-700" />
-                    </button>
-                    <button className="p-2 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors">
-                        <MessageSquare size={18} className="text-gray-700" />
-                    </button>
-                </div> */}
-
                 {/* Main content */}
                 <article className="prose lg:prose-lg xl:prose-xl mx-auto prose-headings:font-bold prose-headings:text-gray-800 prose-p:text-gray-600 prose-a:text-indigo-600 prose-a:no-underline hover:prose-a:underline">
                     <CustomMarkdown markdown={post.content} />
                 </article>
+
+                {/* Post navigation */}
+                <div className="flex justify-between items-center">
+                    {prevPost ? (
+                        <Link href={`/post/${prevPost.slug || prevPost.id}`} passHref>
+                            <Button variant="ghost" className="flex items-center text-left group">
+                                <MoveLeft size={20} className="mr-2 group-hover:transform group-hover:-translate-x-1 transition-transform" />
+                                <div>
+                                    <div className="text-xs text-gray-700">Previous</div>
+                                </div>
+                            </Button>
+                        </Link>
+                    ) : (
+                        <div className="invisible">Placeholder</div>
+                    )}
+
+                    {nextPost ? (
+                        <Link href={`/post/${nextPost.slug || nextPost.id}`} passHref>
+                            <Button variant="ghost" className="flex items-center text-right group">
+                                <div>
+                                    <div className="text-xs text-gray-700">Next</div>
+                                </div>
+                                <MoveRight size={20} className="ml-2 group-hover:transform group-hover:translate-x-1 transition-transform" />
+                            </Button>
+                        </Link>
+                    ) : (
+                        <div className="invisible">Placeholder</div>
+                    )}
+                </div>
             </div>
         </Layout>
     );

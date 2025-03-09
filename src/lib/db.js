@@ -38,7 +38,10 @@ db.exec(`
     cover TEXT,
     draft INTEGER DEFAULT 0,
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-    slug TEXT UNIQUE NOT NULL
+    published_at DATETIME,
+    author TEXT,
+    slug TEXT UNIQUE NOT NULL,
+    tags TEXT
   );
   CREATE INDEX IF NOT EXISTS idx_posts_created_at_desc ON posts (created_at DESC);
   CREATE INDEX IF NOT EXISTS idx_posts_slug ON posts (slug);
@@ -67,6 +70,11 @@ export function getPostById(id) {
 export function getPostBySlug(slug) {
   const stmt = db.prepare('SELECT * FROM posts WHERE slug = ?');
   return stmt.get(slug);
+}
+
+export function getPublishedPostIDs() {
+  const stmt = db.prepare('SELECT id FROM posts WHERE draft = 0');
+  return stmt.all();
 }
 
 
