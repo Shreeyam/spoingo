@@ -4,7 +4,7 @@ import { getPostById, updatePost } from '@/lib/db';
 
 export async function GET(request, { params }) {
     try {
-        const id = params.id;
+        const { id } = await params;
         const post = getPostById(id);
 
         if (!post) {
@@ -20,7 +20,7 @@ export async function GET(request, { params }) {
 
 export async function PUT(request, { params }) {
     try {
-        const id = params.id;
+        const { id } = await params;
         const body = await request.json();
         const { title, slug, content, cover, draft } = body;
 
@@ -33,7 +33,10 @@ export async function PUT(request, { params }) {
             return NextResponse.json({ error: 'Post not found' }, { status: 404 });
         }
 
-        updatePost(id, { title, slug, content, cover, draft });
+        // If the post is being published, set the published_at date to now
+        const published_at = (post.draft === 1 && draft === 0) ? new Date().toISOString() : post.published_at;
+
+        updatePost(id, { title, slug, content, cover, draft, published_at: published_at });
         return NextResponse.json({ success: true });
     } catch (error) {
         console.error('Error updating post:', error);

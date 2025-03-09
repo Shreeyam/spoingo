@@ -14,26 +14,26 @@ import { ScrollArea } from '@/components/ui/scroll-area';
 import Link from 'next/link';
 
 export default function ImageSelector({ value, onChange, title = "Select Image" }) {
-    const [images, setImages] = useState([]);
+    const [images, setImages] = useState(null);
     const [searchTerm, setSearchTerm] = useState('');
     const [isLoading, setIsLoading] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
 
     // Fetch images when popover opens
     useEffect(() => {
-        if (isOpen) {
+        if (isOpen && images === null) {
             fetchImages();
         }
     }, [isOpen]);
 
     const fetchImages = async () => {
         setIsLoading(true);
+        setImages([]);
         try {
             const response = await fetch('/api/images');
             if (response.ok) {
                 const data = await response.json();
                 setImages(data);
-                console.log(data)
             }
         } catch (error) {
             console.error('Error fetching images:', error);
@@ -42,9 +42,9 @@ export default function ImageSelector({ value, onChange, title = "Select Image" 
         }
     };
 
-    const filteredImages = images.filter(image =>
+    const filteredImages = images ? images.filter(image =>
         image.name.toLowerCase().includes(searchTerm.toLowerCase())
-    );
+    ) : [];
 
     const handleImageSelect = (imageUrl) => {
         onChange(imageUrl);
@@ -131,7 +131,7 @@ export default function ImageSelector({ value, onChange, title = "Select Image" 
                         </ScrollArea>
                     )}
                     <Button variant="secondary" className="w-full" onClick={() => setIsOpen(false)}>
-                        <Link href="/admin/images">Manage Images</Link>
+                        <Link href="/cms">Manage Images</Link>
                     </Button>
                     <Button variant="secondary" className="w-full" onClick={() => setIsOpen(false)}>
                         Close

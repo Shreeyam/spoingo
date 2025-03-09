@@ -92,13 +92,19 @@ export default function ImageManagement({ onSelectImage, showSelectOption = fals
             clearInterval(interval);
             setUploadProgress(100);
 
-            if (!res.ok) throw new Error('Upload failed');
+            if (!res.ok) {
+                const body = await res.json();
+                window.alert(`Upload failed: ${body.error}`);
+                throw new Error(body.error);
+            }
 
             // Refresh image list
             fetchImages();
         } catch (error) {
             console.error('Error uploading image:', error);
         } finally {
+            e.target.value = null;
+            
             setTimeout(() => {
                 setIsUploading(false);
                 setUploadProgress(0);
@@ -391,7 +397,8 @@ export default function ImageManagement({ onSelectImage, showSelectOption = fals
                         <Input
                             id="image-name"
                             value={newImageName}
-                            onChange={(e) => setNewImageName(e.target.value)}
+                            onChange={(e) => setNewImageName(e.target.value.trim())}
+                            onKeyDown={(e) => e.key === 'Enter' && handleRename()}
                             className="mt-1"
                         />
                     </div>

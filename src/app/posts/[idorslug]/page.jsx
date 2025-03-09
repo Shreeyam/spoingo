@@ -1,7 +1,7 @@
 import React from 'react';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import { getPostById, getPostBySlug, getPreviousPost, getNextPost } from '@/lib/db';
+import { getPostById, getPostBySlug, getPostIDs } from '@/lib/db';
 import Layout from '@/components/Layout';
 import { Dot, User, MoveLeft, MoveRight } from 'lucide-react';
 import CustomMarkdown from '@/components/ui/custommarkdown';
@@ -10,7 +10,6 @@ import { Card, CardContent } from '@/components/ui/card';
 
 export default async function PostPage({ params }) {
     const { idorslug } = await params; // assuming idorslug is an array
-    console.log(idorslug);
 
     let post;
     const firstSegment = idorslug[0];
@@ -25,15 +24,18 @@ export default async function PostPage({ params }) {
         post = getPostBySlug(idorslug);
     }
 
+    
     if (!post || post.draft) {
         notFound();
     }
-
+    
+    const all_post_ids = getPostIDs();
     // Get previous and next posts
-    const prevPost = { id: post.id - 1 }
-    const nextPost = { id: post.id + 1 }
+    const current_index = all_post_ids.indexOf(post.id);
+    const prevPostID = current_index > 0 ? all_post_ids[current_index - 1] : null;
+    const nextPostID = current_index < all_post_ids.length - 1 ? all_post_ids[current_index + 1] : null;
 
-    const publishedDate = post.created_at ? new Date(post.created_at) : new Date();
+    const publishedDate = post.published_at ? new Date(post.published_at) : new Date();
     const wordCount = post.content ? post.content.split(/\s+/).length : 0;
     const readingTime = Math.max(1, Math.round(wordCount / 200)); // Assuming 200 words per minute
 
@@ -66,12 +68,12 @@ export default async function PostPage({ params }) {
 
                 {/* Post navigation */}
                 <div className="flex justify-between items-center">
-                    {prevPost ? (
-                        <Link href={`/post/${prevPost.slug || prevPost.id}`} passHref>
+                    {prevPostID ? (
+                        <Link href={`/posts/${prevPostID}`} passHref>
                             <Button variant="ghost" className="flex items-center text-left group">
                                 <MoveLeft size={20} className="mr-2 group-hover:transform group-hover:-translate-x-1 transition-transform" />
                                 <div>
-                                    <div className="text-xs text-gray-700">Previous</div>
+                                    <div className="text-xs text-gray-600">Previous</div>
                                 </div>
                             </Button>
                         </Link>
@@ -79,11 +81,11 @@ export default async function PostPage({ params }) {
                         <div className="invisible">Placeholder</div>
                     )}
 
-                    {nextPost ? (
-                        <Link href={`/post/${nextPost.slug || nextPost.id}`} passHref>
+                    {nextPostID ? (
+                        <Link href={`/posts/${nextPostID}`} passHref>
                             <Button variant="ghost" className="flex items-center text-right group">
                                 <div>
-                                    <div className="text-xs text-gray-700">Next</div>
+                                    <div className="text-xs text-gray-600">Next</div>
                                 </div>
                                 <MoveRight size={20} className="ml-2 group-hover:transform group-hover:translate-x-1 transition-transform" />
                             </Button>

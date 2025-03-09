@@ -43,4 +43,4 @@ next-env.d.ts
 /public/**/*
 
 # database files
-.db
+*.db

@@ -4,7 +4,7 @@ import { createImage } from '@/lib/db';
 import { writeFile, mkdir } from 'fs/promises';
 import path from 'path';
 import sharp from 'sharp';
-import { randomUUID } from 'crypto';
+import fs from 'fs';
 
 
 export async function POST(request) {
@@ -23,9 +23,8 @@ export async function POST(request) {
         const originalName = file.name;
         const extension = path.extname(originalName);
         const baseName = path.basename(originalName, extension);
-        const sanitizedName = baseName.replace(/[^a-zA-Z0-9]/g, '-').toLowerCase();
-        const uniqueId = randomUUID().slice(0, 8);
-        const filename = `${sanitizedName}-${uniqueId}${extension}`;
+        const sanitizedName = originalName.replace(/[^a-zA-Z0-9]/g, '-').toLowerCase();
+        const filename = originalName;
 
         // Set up directories
         const uploadDir = path.join(process.cwd(), 'public', 'uploads');
@@ -34,6 +33,16 @@ export async function POST(request) {
         // Ensure directories exist
         await mkdir(uploadDir, { recursive: true });
         await mkdir(thumbnailDir, { recursive: true });
+
+        // Check if file already exists
+        try {
+            // Check if the file exists; if it does, this won't throw.
+            await fs.promises.access(path.join(uploadDir, filename));
+            return NextResponse.json({ error: 'File already exists' }, { status: 409 });
+        } catch (error) {
+            // If the file doesn't exist, access will throw an error (e.g., ENOENT),
+            // and we can continue with file creation.
+        }
 
         // Write original file
         const filePath = path.join(uploadDir, filename);

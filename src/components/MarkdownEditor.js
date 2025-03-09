@@ -23,7 +23,7 @@ export default function MarkdownEditor() {
     const [markdown, setMarkdown] = useState('');
     const [showPreview, setShowPreview] = useState(true);
     const [cover, setCover] = useState('');
-    const [isDraft, setIsDraft] = useState(false);
+    const [isDraft, setIsDraft] = useState(true);
     const [submitting, setSubmitting] = useState(false);
     const [currentPostId, setCurrentPostId] = useState(null);
     const [isEditing, setIsEditing] = useState(false);
@@ -81,16 +81,14 @@ export default function MarkdownEditor() {
     };
 
     const handleSelectPost = async (post) => {
-        if (!post.draft) {
-            const res = await fetch(`/api/posts/${post.id}`, {
-                method: 'GET',
-                credentials: 'include',
-            });
+        const res = await fetch(`/api/posts/${post.id}`, {
+            method: 'GET',
+            credentials: 'include',
+        });
 
-            if (!res.ok) throw new Error('Failed to fetch post');
-            const fetchedPost = await res.json();
-            post = fetchedPost;
-        }
+        if (!res.ok) throw new Error('Failed to fetch post');
+        const fetchedPost = await res.json();
+        post = fetchedPost;
 
         setTitle(post.title);
         setSlug(post.slug);

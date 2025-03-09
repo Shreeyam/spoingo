@@ -6,7 +6,7 @@ import path from 'path';
 
 export async function GET(request, { params }) {
     try {
-        const { id } = params;
+        const { id } = await params;
         const image = getImageById(id);
 
         if (!image) {
@@ -22,7 +22,7 @@ export async function GET(request, { params }) {
 
 export async function PUT(request, { params }) {
     try {
-        const { id } = params;
+        const { id } = await params;
         const body = await request.json();
         const { name } = body; // expected to be the new base name without extension
 
@@ -113,7 +113,7 @@ export async function PUT(request, { params }) {
 
 export async function DELETE(request, { params }) {
     try {
-        const { id } = params;
+        const { id } = await params;
 
         const image = getImageById(id);
         if (!image) {

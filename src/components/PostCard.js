@@ -31,7 +31,7 @@ export default function PostCard({ post, galleryMode = false }) {
                         <CardContent className="flex flex-col justify-start mt-2 p-0">
                             {/* Date on top */}
                             <p className="text-sm text-gray-500 mb-1">
-                                {new Date(post.created_at).toISOString().split('T')[0]}
+                                {new Date(post.published_at).toISOString().split('T')[0]}
                             </p>
                             {/* Title with two lines max */}
                             <CardTitle
@@ -85,7 +85,7 @@ export default function PostCard({ post, galleryMode = false }) {
                                     {post.title}
                                 </CardTitle>
                                 <p className="text-sm text-gray-500 flex-shrink-0">
-                                    {new Date(post.created_at).toISOString().split('T')[0]}
+                                    {new Date(post.published_at).toISOString().split('T')[0]}
                                 </p>
                             </div>
                             {/* Preview text */}

@@ -9,8 +9,9 @@ import {
     SelectValue
 } from '@/components/ui/select';
 import { Input } from '@/components/ui/input';
-import { Search, Plus, FileText } from 'lucide-react';
+import { Search, Plus, File, FileText, RefreshCcw } from 'lucide-react';
 import { ScrollArea } from '@/components/ui/scroll-area';
+import { Button } from './ui/button';
 
 export default function PostSelector({ onSelectPost, onCreateNew, className }) {
     const [posts, setPosts] = useState([]);
@@ -18,16 +19,17 @@ export default function PostSelector({ onSelectPost, onCreateNew, className }) {
     const [isLoading, setIsLoading] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
 
+    // Fetch posts when popover opens
     useEffect(() => {
         if (isOpen && posts.length === 0) {
             fetchPosts();
         }
-    }, [isOpen, posts]);
+    }, [isOpen]);
 
     const fetchPosts = async () => {
         setIsLoading(true);
         try {
-            const response = await fetch('/api/list-posts');
+            const response = await fetch('/api/list-posts?draft=include');
             if (response.ok) {
                 const data = await response.json();
                 setPosts(data);
@@ -73,10 +75,13 @@ export default function PostSelector({ onSelectPost, onCreateNew, className }) {
                                 onMouseDown={(e) => e.stopPropagation()}
                                 className="flex-1"
                             />
+                            <Button variant="ghost" onClick={fetchPosts}>
+                                <RefreshCcw size={16} />
+                            </Button>
                         </div>
                         <ScrollArea className="h-64">
                             <SelectItem value="new" className="flex items-center">
-                                <Plus className="mr-2 h-4 w-4" /> Create New Post
+                                <Plus className="mr-1 " size={16} /> Create New Post
                             </SelectItem>
                             <div className="pt-2 pb-1">
                                 <div className="text-sm font-medium text-gray-500 px-2">Existing Posts</div>
@@ -86,7 +91,7 @@ export default function PostSelector({ onSelectPost, onCreateNew, className }) {
                             ) : (
                                 filteredPosts.map((post) => (
                                     <SelectItem key={post.id} value={post.id.toString()} className="flex items-center">
-                                        <FileText className="mr-2 h-4 w-4" />
+                                        {post.draft ? <File className="mr-1" size={16} /> : <FileText className="mr-1" size={16} />}
                                         <div className="truncate">
                                             {post.title} {post.draft === 1 && <span className="text-xs text-gray-500">(Draft)</span>}
                                         </div>

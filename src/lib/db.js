@@ -38,7 +38,7 @@ db.exec(`
     cover TEXT,
     draft INTEGER DEFAULT 0,
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-    published_at DATETIME,
+    published_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     author TEXT,
     slug TEXT UNIQUE NOT NULL,
     tags TEXT
@@ -52,14 +52,20 @@ export function getPosts() {
   return stmt.all();
 }
 
-export function getPostList() {
-  const stmt = db.prepare('SELECT id, title, preview, created_at, slug FROM posts WHERE draft = 0 ORDER BY created_at DESC');
-  return stmt.all();
+export function getPostList(draft = 0) {
+  const stmt = draft !== null
+    ? db.prepare('SELECT id, title, preview, created_at, slug, draft FROM posts WHERE draft = ? ORDER BY created_at DESC')
+    : db.prepare('SELECT id, title, preview, created_at, slug, draft FROM posts ORDER BY created_at DESC');
+
+  if (draft === null) return stmt.all();
+  return stmt.all(draft);
 }
 
-export function getPostsPaginated(offset = 0, limit = 10) {
-  const stmt = db.prepare('SELECT * FROM posts WHERE draft = 0 ORDER BY created_at DESC LIMIT ? OFFSET ?');
-  return stmt.all(limit, offset);
+export function getPostsPaginated(offset = 0, limit = 10, draft = 0) {
+  const stmt = draft !== null
+    ? db.prepare('SELECT * FROM posts WHERE draft = ? ORDER BY created_at DESC LIMIT ? OFFSET ?')
+    : db.prepare('SELECT * FROM posts ORDER BY created_at DESC LIMIT ? OFFSET ?');
+  return draft !== null ? stmt.all(draft, limit, offset) : stmt.all(limit, offset);
 }
 
 export function getPostById(id) {
@@ -72,9 +78,12 @@ export function getPostBySlug(slug) {
   return stmt.get(slug);
 }
 
-export function getPublishedPostIDs() {
-  const stmt = db.prepare('SELECT id FROM posts WHERE draft = 0');
-  return stmt.all();
+export function getPostIDs(draft = 0) {
+  const stmt = draft !== null
+    ? db.prepare('SELECT id FROM posts WHERE draft = ? ORDER BY created_at')
+    : db.prepare('SELECT id FROM posts ORDER BY created_at');
+
+  return draft !== null ? stmt.all(draft).map(x => x.id) : stmt.all().map(x => x.id);
 }
 
 
@@ -145,11 +154,8 @@ export function updateImage(id, { name, url = null, thumbnailUrl = null }) {
   if (updates.length === 0) return false;
 
   params.push(id);
-  console.log(name, url, thumbnailUrl)
-  console.log(updates);
 
   const query = `UPDATE images SET ${updates.join(', ')} WHERE id = ?`;
-  console.log(query)
   const stmt = db.prepare(query);
   const info = stmt.run(...params);
 
@@ -164,14 +170,25 @@ export function deleteImage(id) {
 
 // Add these functions to src/lib/db.js
 
-export function updatePost(id, { title, content, cover = null, draft = 0, slug }) {
-  const stmt = db.prepare(`
+export function updatePost(id, { title, content, cover = null, draft = 0, slug, published_at = null, author = null, tags = null }) {
+  if (published_at === null) {
+    const stmt = db.prepare(`
+      UPDATE posts 
+      SET title = ?, content = ?, preview = ?, cover = ?, draft = ?, slug = ?
+      WHERE id = ?
+    `);
+    const info = stmt.run(title, content, getPreview(content), cover, draft, slug, id);
+    return info.changes > 0;
+  } else {
+    const stmt = db.prepare(`
     UPDATE posts 
-    SET title = ?, content = ?, preview = ?, cover = ?, draft = ?, slug = ? 
+    SET title = ?, content = ?, preview = ?, cover = ?, draft = ?, slug = ?, published_at = ?
     WHERE id = ?
   `);
-  const info = stmt.run(title, content, getPreview(content), cover, draft, slug, id);
-  return info.changes > 0;
+    const info = stmt.run(title, content, getPreview(content), cover, draft, slug, published_at, id);
+    return info.changes > 0;
+  }
+
 }
 
 export function deletePost(id) {
