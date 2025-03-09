@@ -1,5 +1,5 @@
 // src/app/blog/page.jsx
-export const revalidate = 600;
+export const revalidate = 300;
 
 import Layout from '@/components/Layout';
 import { getPostsPaginated } from '@/lib/db';
