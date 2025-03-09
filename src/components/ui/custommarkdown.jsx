@@ -1,14 +1,13 @@
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
-import remarkGfm from 'remark-gfm';
 import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from '@/components/ui/carousel';
 import { ExternalLink } from 'lucide-react';
-import SafeImage from '@/components/SafeImage';
+import smartypants from 'remark-smartypants';
 
 const CustomMarkdown = ({ markdown }) => {
     return (
         <ReactMarkdown
-            remarkPlugins={[remarkGfm]}
+            remarkPlugins={[smartypants]}
             components={{
                 // Custom renderer for anchor tags.
                 a: ({ node, children, ...props }) => (

@@ -26,7 +26,6 @@
     "better-sqlite3": "^11.8.1",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
-    "cmdk": "^1.0.0",
     "date-fns": "^4.1.0",
     "embla-carousel-react": "^8.5.2",
     "formidable": "^3.5.2",
@@ -37,6 +36,8 @@
     "react-markdown": "^10.0.1",
     "react-masonry-css": "^1.0.16",
     "remark-gfm": "^4.0.1",
+    "remark-smartypants": "^3.0.2",
+    "remark-textr": "^6.1.0",
     "slugify": "^1.6.6",
     "tailwind-merge": "^3.0.2",
     "tailwindcss-animate": "^1.0.7"
