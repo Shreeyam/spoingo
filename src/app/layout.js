@@ -7,7 +7,7 @@ import ExtLink from '@/components/ui/externallink';
 
 export const metadata = {
     title: 'Shreeyam\'s Page',
-    description: 'A blog built with Next.js App Router',
+    description: 'Shreeyam\'s personal website',
 };
 
 function Navbar() {
