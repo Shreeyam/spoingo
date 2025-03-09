@@ -62,7 +62,7 @@ export default async function PostPage({ params }) {
                 </div>
 
                 {/* Main content */}
-                <article className="prose lg:prose-lg xl:prose-xl mx-auto prose-headings:font-bold prose-headings:text-gray-800 prose-p:text-gray-600 prose-a:text-indigo-600 prose-a:no-underline hover:prose-a:underline">
+                <article className="prose lg:prose-lg xl:prose-xl mx-auto prose-headings:font-bold prose-headings:text-gray-800 prose-p:text-gray-800">
                     <CustomMarkdown markdown={post.content} />
                 </article>
 
