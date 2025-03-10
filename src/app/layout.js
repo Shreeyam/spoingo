@@ -48,6 +48,23 @@ function Footer() {
 export default function RootLayout({ children }) {
     return (
         <html lang="en">
+            <head>
+                {/* Google Analytics */}
+                <Script
+                    src={`https://www.googletagmanager.com/gtag/js?id=${process.env.GA_ID}`}
+                    strategy="afterInteractive"
+                />
+                <Script id="google-analytics" strategy="afterInteractive">
+                    {`
+                        window.dataLayer = window.dataLayer || [];
+                        function gtag(){dataLayer.push(arguments);}
+                        gtag('js', new Date());
+                        gtag('config', '${process.env.GA_ID}', {
+                          page_path: window.location.pathname,
+                        });
+            `}
+                </Script>
+            </head>
             <body>
                 <div className="container px-4 mx-auto">
                     <Navbar />
