@@ -111,7 +111,7 @@ export default function ImageSelector({ value, onChange, title = "Select Image" 
                                     >
                                         <div className="aspect-square relative">
                                             <img
-                                                src={image.thumbnail || image.url}
+                                                src={image.thumbnailUrl || image.url}
                                                 alt={image.name}
                                                 className="object-cover w-full h-full"
                                             />

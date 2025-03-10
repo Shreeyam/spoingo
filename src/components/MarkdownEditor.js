@@ -257,7 +257,7 @@ export default function MarkdownEditor() {
                         {cover && (
                             <div className="mb-2 relative w-40 h-40 border rounded-md overflow-hidden">
                                 <Image
-                                    src={cover}
+                                    src={cover.replace('/uploads/', '/uploads/thumbnails/thumb-')}
                                     alt="Cover"
                                     fill
                                     className="object-cover"
