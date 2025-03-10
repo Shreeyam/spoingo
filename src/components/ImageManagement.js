@@ -104,7 +104,7 @@ export default function ImageManagement({ onSelectImage, showSelectOption = fals
             console.error('Error uploading image:', error);
         } finally {
             e.target.value = null;
-            
+
             setTimeout(() => {
                 setIsUploading(false);
                 setUploadProgress(0);
@@ -240,11 +240,10 @@ export default function ImageManagement({ onSelectImage, showSelectOption = fals
                                 >
                                     <CardContent className="p-2">
                                         <div className="relative aspect-square">
-                                            <Image
+                                            <img
                                                 src={image.thumbnailUrl || image.url}
                                                 alt={image.name}
-                                                fill
-                                                className="object-cover rounded-md"
+                                                className="object-cover rounded-md w-full h-full"
                                             />
                                         </div>
                                         <p className="mt-2 text-sm font-medium truncate">{image.name}</p>
@@ -287,11 +286,10 @@ export default function ImageManagement({ onSelectImage, showSelectOption = fals
                                         >
                                             <td className="p-3">
                                                 <div className="relative h-12 w-12">
-                                                    <Image
+                                                    <img
                                                         src={image.thumbnailUrl || image.url}
                                                         alt={image.name}
-                                                        fill
-                                                        className="object-cover rounded-md"
+                                                        className="object-cover rounded-md w-full h-full"
                                                     />
                                                 </div>
                                             </td>
@@ -320,11 +318,10 @@ export default function ImageManagement({ onSelectImage, showSelectOption = fals
                     {selectedImage && (
                         <div className="space-y-4">
                             <div className="relative h-64 w-full">
-                                <Image
+                                <img
                                     src={selectedImage.url}
                                     alt={selectedImage.name}
-                                    fill
-                                    className="object-contain"
+                                    className="object-contain w-full h-full"
                                 />
                             </div>
                             <div className="space-y-2">
@@ -450,11 +447,10 @@ export function ImageSelector({ onSelectImage, value }) {
             <div className="mb-2 flex items-center gap-2">
                 {selectedImage && (
                     <div className="relative h-20 w-20 rounded-md overflow-hidden border">
-                        <Image
+                        <img
                             src={selectedImage.thumbnailUrl || selectedImage.url}
                             alt={selectedImage.name}
-                            fill
-                            className="object-cover"
+                            className="object-cover w-full h-full"
                         />
                     </div>
                 )}

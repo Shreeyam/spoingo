@@ -13,7 +13,7 @@ export default function PostCard({ post, galleryMode = false }) {
                         {/* Remove fixed height so the image uses its intrinsic/responsive dimensions */}
                         <div className="relative w-full">
                             {post.cover ? (
-                                <Image
+                                <img
                                     src={post.cover}
                                     alt={post.title}
                                     // Instead of using fill with a fixed height,
@@ -64,11 +64,10 @@ export default function PostCard({ post, galleryMode = false }) {
                     <div className="flex min-w-0">
                         <div className="relative flex-none w-24 h-24">
                             {post.cover ? (
-                                <Image
-                                    src={post.cover}
+                                <img
+                                    src={post.cover.replace('/uploads/', '/uploads/thumbnails/thumb-')}
                                     alt={post.title}
-                                    fill
-                                    className="object-cover"
+                                    className="object-cover w-full h-full"
                                 />
                             ) : (
                                 <div className="w-24 h-24 flex items-center justify-center">

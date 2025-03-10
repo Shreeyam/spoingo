@@ -110,11 +110,10 @@ export default function ImageSelector({ value, onChange, title = "Select Image" 
                                         onClick={() => handleImageSelect(image.url)}
                                     >
                                         <div className="aspect-square relative">
-                                            <Image
+                                            <img
                                                 src={image.thumbnail || image.url}
                                                 alt={image.name}
-                                                fill
-                                                className="object-cover"
+                                                className="object-cover w-full h-full"
                                             />
                                         </div>
                                         {/* <div className="absolute bottom-0 left-0 right-0 bg-black/50 p-1">
