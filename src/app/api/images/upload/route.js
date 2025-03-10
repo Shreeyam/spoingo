@@ -23,8 +23,8 @@ export async function POST(request) {
         const originalName = file.name;
         const extension = path.extname(originalName);
         const baseName = path.basename(originalName, extension);
-        const sanitizedName = originalName.replace(/[^a-zA-Z0-9]/g, '-').toLowerCase();
-        const filename = originalName;
+        const sanitizedName = `${baseName.replace(/[^a-zA-Z0-9]/g, '-')}${extension}`.toLowerCase();
+        const filename = sanitizedName;
 
         // Set up directories
         const uploadDir = path.join(process.cwd(), 'public', 'uploads');
@@ -65,7 +65,7 @@ export async function POST(request) {
         const thumbnailUrl = `/uploads/thumbnails/${thumbnailFilename}`;
 
         const imageId = createImage({
-            name: baseName,
+            name: sanitizedName,
             url: imageUrl,
             thumbnailUrl: thumbnailUrl,
             size: file.size,
