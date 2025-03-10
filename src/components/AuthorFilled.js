@@ -53,13 +53,6 @@ export default function AuthorFilled() {
                     <Globe size={16} />
                     <span>ORCID</span>
                 </Link>
-                <Link
-                    href="https://instagram.com/shreebee_" target="_blank"
-                    className="flex items-center space-x-2 hover:underline"
-                >
-                    <Instagram size={16} />
-                    <span>Instagram</span>
-                </Link>
             </div>
         </AuthorBlock>
     );
