@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { ExternalLink } from 'lucide-react';
 import ExtLink from '@/components/ui/externallink';
+import Script from 'next/script';
 
 export const metadata = {
     title: 'Shreeyam\'s Page',
