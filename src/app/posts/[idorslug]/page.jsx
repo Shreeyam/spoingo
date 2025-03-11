@@ -1,12 +1,25 @@
 import React from 'react';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import { getPostById, getPostBySlug, getPostIDs } from '@/lib/db';
+import { getPostById, getPostBySlug, getPostIDs, getPostMetadataByID, getPostMetadataBySlug } from '@/lib/db';
 import Layout from '@/components/Layout';
 import { Dot, User, MoveLeft, MoveRight } from 'lucide-react';
 import CustomMarkdown from '@/components/ui/custommarkdown';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
+
+export async function generateMetadata({ params }) {
+    const { idorslug } = await params;
+    let post;
+    const firstSegment = idorslug[0];
+
+    if (/^\d/.test(firstSegment)) {
+        post = await getPostMetadataByID(firstSegment);
+    } else {
+        post = await getPostMetadataBySlug(idorslug);
+    }
+
+    return { title: post.title };
+}
 
 export default async function PostPage({ params }) {
     const { idorslug } = await params; // assuming idorslug is an array
@@ -24,11 +37,11 @@ export default async function PostPage({ params }) {
         post = getPostBySlug(idorslug);
     }
 
-    
+
     if (!post || post.draft) {
         notFound();
     }
-    
+
     const all_post_ids = getPostIDs();
     // Get previous and next posts
     const current_index = all_post_ids.indexOf(post.id);

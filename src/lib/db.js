@@ -73,8 +73,18 @@ export function getPostById(id) {
   return stmt.get(id);
 }
 
+export function getPostMetadataByID(ID) {
+  const stmt = db.prepare('SELECT id, title, slug, created_at, published_at, author, tags FROM posts WHERE id = ?');
+  return stmt.get(ID);
+}
+
 export function getPostBySlug(slug) {
   const stmt = db.prepare('SELECT * FROM posts WHERE slug = ?');
+  return stmt.get(slug);
+}
+
+export function getPostMetadataBySlug(slug) {
+  const stmt = db.prepare('SELECT id, title, slug, created_at, published_at, author, tags FROM posts WHERE slug = ?');
   return stmt.get(slug);
 }
 
