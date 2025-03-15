@@ -256,11 +256,11 @@ export default function MarkdownEditor() {
                         </label>
                         {cover && (
                             <div className="mb-2 relative w-40 h-40 border rounded-md overflow-hidden">
-                                <Image
+                                <img
                                     src={cover.replace('/uploads/', '/uploads/thumbnails/thumb-')}
                                     alt="Cover"
                                     fill
-                                    className="object-cover"
+                                    className="object-cover w-full h-full"
                                 />
                             </div>
                         )}
