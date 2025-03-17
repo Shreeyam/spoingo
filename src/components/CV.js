@@ -145,6 +145,15 @@ export default function CV() {
             year: 2025,
             url: "https://opg.optica.org/oe/fulltext.cfm?uri=oe-33-1-1296&id=566864",
         },
+        {
+            title:
+                "Leveraging Realtime Meteorological Data for Dynamic Tasking of Agile Earth-Observing Satellites",
+            authors: "Shreeyam Kacker, Steve Chien, Kiruthika Devaraj, Işil Demir, Kerri Cahoy",
+            note:
+                "International Workshop on Planning & Scheduling for Space (IWPSS) 2025",
+            year: 2025,
+            url: "https://sites.google.com/view/iwpss2025",
+        },
     ];
 
     // State to toggle showing all publications or a subset.
@@ -225,7 +234,10 @@ export default function CV() {
                             <h3 className="font-bold text-gray-800">MIT Space Telecommunications, Astronomy and Radiation Laboratory</h3>
                             <span className="text-gray-600 text-sm">2020 - Present</span>
                         </div>
-                        <p className="text-gray-700 font-medium mb-3">Research Assistant (PI: Prof. Kerri Cahoy) | Cambridge, MA</p>
+                        <div className="flex flex-col sm:flex-row sm:justify-between mb-3">
+                            <p className="text-gray-700 font-medium">Research Assistant (PI: Prof. Kerri Cahoy)</p>
+                            <span className="text-gray-600 text-sm">Cambridge, MA</span>
+                        </div>
                         <ul className="list-disc list-outside ml-5 space-y-2 text-gray-700">
                             <li>Conducted space environment testing and prototyping with NASA for a novel lasercom pointing and tracking system using liquid lenses.</li>
                             <li>Trained machine learning models and created a dataset for on-orbit cloud segmentation as part of a computer vision pipeline to identify ocean fronts.</li>
@@ -240,7 +252,10 @@ export default function CV() {
                             <h3 className="font-bold text-gray-800">Planet Labs</h3>
                             <span className="text-gray-600 text-sm">2022 - 2024</span>
                         </div>
-                        <p className="text-gray-700 font-medium mb-3">Edge Compute/Machine Learning Engineer | San Francisco, CA</p>
+                        <div className="flex flex-col sm:flex-row sm:justify-between mb-3">
+                            <p className="text-gray-700 font-medium">Edge Compute/Machine Learning Engineer</p>
+                            <span className="text-gray-600 text-sm">San Francisco, CA</span>
+                        </div>
                         <ul className="list-disc list-outside ml-5 space-y-2 text-gray-700">
                             <li>Developed next-generation onboard compute platforms for Earth-observing satellite missions using NVIDIA GPUs.</li>
                             <li>Designed, specified, and developed hardware for a low-power computer vision instrument.</li>
@@ -254,7 +269,11 @@ export default function CV() {
                             <h3 className="font-bold text-gray-800">X Development LLC (formerly Google[x])</h3>
                             <span className="text-gray-600 text-sm">2021</span>
                         </div>
-                        <p className="text-gray-700 font-medium mb-3">Intern @X | Mountain View, CA</p>
+                        <div className="flex flex-col sm:flex-row sm:justify-between mb-3">
+                            <p className="text-gray-700 font-medium">Intern @X</p>
+                            <span className="text-gray-600 text-sm">Mountain View, CA</span>
+                        </div>
+
                         <ul className="list-disc list-outside ml-5 space-y-2 text-gray-700">
                             <li>Interned under Project Taara to provide low-cost free-space optical communications (FSOC) internet access for underdeveloped countries.</li>
                             <li>Conducted communications architecture analysis for optically preamplified direct detection and coherent detection techniques.</li>
@@ -268,7 +287,10 @@ export default function CV() {
                             <h3 className="font-bold text-gray-800">Intelligent Environments Europe Ltd (ieDigital)</h3>
                             <span className="text-gray-600 text-sm">2016</span>
                         </div>
-                        <p className="text-gray-700 font-medium mb-3">Software Developer Intern | London, UK</p>
+                        <div className="flex flex-col sm:flex-row sm:justify-between mb-3">
+                            <p className="text-gray-700 font-medium">Software Developer Intern</p>
+                            <span className="text-gray-600 text-sm">London, UK</span>
+                        </div>
                         <ul className="list-disc list-outside ml-5 space-y-2 text-gray-700">
                             <li>Worked as a full stack software developer intern writing C# across teams managed under agile methodology.</li>
                             <li>Automated part of the workflow for business analysts using Python, saving tens of hours on importing old functional specifications into JIRA.</li>
