@@ -259,7 +259,6 @@ export default function MarkdownEditor() {
                                 <img
                                     src={cover.replace('/uploads/', '/uploads/thumbnails/thumb-')}
                                     alt="Cover"
-                                    fill
                                     className="object-cover w-full h-full"
                                 />
                             </div>
