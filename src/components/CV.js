@@ -175,7 +175,7 @@ export default function CV() {
         <>
             {/* Education Section */}
             <section className="mb-4">
-                <h2 className="text-2xl font-semibold mb-4 border-gray-200 text-gray-800">Education</h2>
+            <h2 className="text-2xl font-semibold mb-4 border-gray-200 text-gray-800" id="education">Education</h2>
                 <div className="space-y-4">
                     {/* Combined MIT Education */}
                     <div>

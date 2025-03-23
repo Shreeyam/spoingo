@@ -21,7 +21,7 @@ export default async function HomePage() {
                     </div>
                     {/* Posts take up three columns */}
                     <div className="md:col-span-3">
-                        <Biography />
+                        <Biography showAbout={true} />
                         <Separator className="my-2" />
                         <h1 className="text-3xl font-bold mb-4">Latest Posts</h1>
                         <PaginatedPostList initialPosts={initialPosts} galleryMode={false} />

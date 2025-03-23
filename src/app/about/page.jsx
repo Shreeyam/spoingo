@@ -21,7 +21,7 @@ export default async function About() {
                     </div>
                     {/* Posts take up three columns */}
                     <div className="md:col-span-3">
-                        <Biography />
+                        <Biography showAbout={false}/>
                         <Separator className="my-2"/>
                         <CV/>
                     </div>
