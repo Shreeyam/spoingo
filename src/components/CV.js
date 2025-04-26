@@ -152,7 +152,7 @@ export default function CV() {
             note:
                 "International Workshop on Planning & Scheduling for Space (IWPSS) 2025",
             year: 2025,
-            url: "https://sites.google.com/view/iwpss2025",
+            url: "https://ai.jpl.nasa.gov/public/documents/papers/kacker-iwpss-2025.pdf",
         },
     ];
 

@@ -25,7 +25,7 @@ function Navbar() {
                     <Link href="/about">
                         <Button variant="link" >About</Button>
                     </Link>
-                    <Link href="https://treetrack.shreey.am/" >
+                    <Link href="https://treetrack.xyz/" >
                         <Button variant="link"><ExternalLink size={16} />Treetrack</Button>
                     </Link>
                 </nav>

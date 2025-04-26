@@ -39,7 +39,7 @@ export default function Biography({showAbout = false}) {
             I started this blog for technical sewing projects. There are countless blogs from the early to mid 2010s that have been invaluable to my sewing journey, and I hope to contribute to that body of knowledge. I might occasionally write about fashion, research, or other topics also.
             <br />
             <br />
-            I wrote this blog platform called <ExtLink href="https://www.github.com/Shreeyam/spoingo">Spoingo</ExtLink>. I also host a tree-based productivity software called <ExtLink href="https://treetrack.shreey.am/">Treetrack</ExtLink>.
+            I wrote this blog platform called <ExtLink href="https://www.github.com/Shreeyam/spoingo">Spoingo</ExtLink>. I also host a tree-based productivity software called <ExtLink href="https://treetrack.xyz/">Treetrack</ExtLink>.
             <br />
             <br />
             Contact: shreeyam [at] mit [dot] edu
