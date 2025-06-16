@@ -154,6 +154,15 @@ export default function CV() {
             year: 2025,
             url: "https://ai.jpl.nasa.gov/public/documents/papers/kacker-iwpss-2025.pdf",
         },
+        {
+            title:
+                "Vision-Based Dynamic Tasking for Earth-Observing Satellite Constellations",
+            authors: "Shreeyam Kacker, Kiruthika Devaraj, Işil Demir, Steve Chien, Kerri Cahoy",
+            note:
+                "39th Annual AIAA/USU Conference on Small Satellites (forthcoming)",
+            year: 2025,
+            url: "https://digitalcommons.usu.edu/",
+        },
     ];
 
     // State to toggle showing all publications or a subset.
