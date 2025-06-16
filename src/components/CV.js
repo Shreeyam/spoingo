@@ -189,7 +189,7 @@ export default function CV() {
                     {/* Combined MIT Education */}
                     <div>
                         <h3 className="font-bold text-gray-800">Massachusetts Institute of Technology (MIT)</h3>
-                        <div className="mt-2 space-y-4">
+                        <div className="space-y-4">
                             <div>
                                 <div className="flex justify-between items-start">
                                     <p className="font-medium text-gray-700">
