@@ -163,6 +163,25 @@ export default function CV() {
             year: 2025,
             url: "https://digitalcommons.usu.edu/",
         },
+        {
+            title:
+                "Deep Reinforcement Learning for Multi-Agent Spacecraft Electromagnetic Formation Flight",
+            authors: "J Biberstein, Shreeyam Kacker, Kerri Cahoy, S Karaman",
+            note:
+                "in prepation",
+            year: 2025,
+            url: "",
+        },
+        {
+            title:
+                "Vision Language Models for Single Shot Scene Understanding and Dynamic Tasking of Agile Earth-Observing Satellites",
+            authors: "Shreeyam Kacker, Kerri Cahoy",
+            note:
+                "in prepation",
+            year: 2025,
+            url: "",
+        },
+
     ];
 
     // State to toggle showing all publications or a subset.
@@ -184,7 +203,7 @@ export default function CV() {
         <>
             {/* Education Section */}
             <section className="mb-4">
-            <h2 className="text-2xl font-semibold mb-4 border-gray-200 text-gray-800" id="education">Education</h2>
+                <h2 className="text-2xl font-semibold mb-4 border-gray-200 text-gray-800" id="education">Education</h2>
                 <div className="space-y-4">
                     {/* Combined MIT Education */}
                     <div>
@@ -239,52 +258,56 @@ export default function CV() {
                 <div className="space-y-6">
                     {/* MIT STAR Lab */}
                     <div>
-                        <div className="flex flex-col sm:flex-row sm:justify-between mb-2">
+                        <div className="flex flex-col sm:flex-row sm:justify-between">
                             <h3 className="font-bold text-gray-800">MIT Space Telecommunications, Astronomy and Radiation Laboratory</h3>
                             <span className="text-gray-600 text-sm">2020 - Present</span>
                         </div>
-                        <div className="flex flex-col sm:flex-row sm:justify-between mb-3">
+                        <div className="flex flex-col sm:flex-row sm:justify-between">
                             <p className="text-gray-700 font-medium">Research Assistant (PI: Prof. Kerri Cahoy)</p>
                             <span className="text-gray-600 text-sm">Cambridge, MA</span>
                         </div>
                         <ul className="list-disc list-outside ml-5 space-y-2 text-gray-700">
-                            <li>Conducted space environment testing and prototyping with NASA for a novel lasercom pointing and tracking system using liquid lenses.</li>
-                            <li>Trained machine learning models and created a dataset for on-orbit cloud segmentation as part of a computer vision pipeline to identify ocean fronts.</li>
-                            <li>Tested and validated machine learning algorithms on ESA&apos;s OPS-SAT mission.</li>
-                            <li>Designed algorithms for dynamic alteration of spacecraft imaging schedules based on inputs from external perception systems.</li>
+                            <li>Trained policies through reinforcement learning for multi-agent electromagnetic formation flight, for use in space as a set of collaborative agents</li>
+                            <li>Developed analytic and reinforcement learned heuristics for dynamic task rescheduling for agile Earth-observing spacecraft</li>
+                            <li>Trained machine learning models and created dataset for detection of ocean fronts from satellite imagery</li>
+                            <li>Fine-tuned vision-language models for spatial visual question answering on remote sensing imagery</li>
+                            <li>Designed, trained, tested, and validated vision models for cloud segmentation onboard ESA’s OPS-SAT mission</li>
+                            <li>Conducted space environment testing and prototyping with NASA for a novel lasercom pointing and tracking system using liquid lenses, including testing in microgravity on a parabolic flight</li>
                         </ul>
                     </div>
 
                     {/* Planet Labs */}
                     <div>
-                        <div className="flex flex-col sm:flex-row sm:justify-between mb-2">
+                        <div className="flex flex-col sm:flex-row sm:justify-between">
                             <h3 className="font-bold text-gray-800">Planet Labs</h3>
                             <span className="text-gray-600 text-sm">2022 - 2024</span>
                         </div>
-                        <div className="flex flex-col sm:flex-row sm:justify-between mb-3">
+                        <div className="flex flex-col sm:flex-row sm:justify-between">
                             <p className="text-gray-700 font-medium">Edge Compute/Machine Learning Engineer</p>
                             <span className="text-gray-600 text-sm">San Francisco, CA</span>
                         </div>
                         <ul className="list-disc list-outside ml-5 space-y-2 text-gray-700">
-                            <li>Developed next-generation onboard compute platforms for Earth-observing satellite missions using NVIDIA GPUs.</li>
-                            <li>Designed, specified, and developed hardware for a low-power computer vision instrument.</li>
-                            <li>Trained machine learning vision models for spacecraft perception and trajectory planning.</li>
-                        </ul>
+                            <li>Architected next-generation onboard compute platform for Planet’s Earth-observing satellite missions using NVIDIA GPUs as the first hire on the edge compute team</li>
+                            <li>Designed, specified, and developed hardware for a low-power computer vision instrument for onboard autonomy</li>
+                            <li>Wrote and deployed code for autonomous operations stack, including Linux camera drivers, model inference, security infrastructure, and operation with main flight computer</li>
+                            <li>Radiation tested components including NVIDIA Jetson devices at UC Davis cyclotron to qualify hardware for space operations</li>
+                            <li>Trained and distilled vision models for utility estimation for upcoming imaging activities, to be used for autonomous operations</li>
+                            <li>Designed algorithms for onboard autonomous task re-scheduling, data collection and deployment campaign in progress</li>                        </ul>
                     </div>
 
                     {/* X Development */}
                     <div>
-                        <div className="flex flex-col sm:flex-row sm:justify-between mb-2">
+                        <div className="flex flex-col sm:flex-row sm:justify-between">
                             <h3 className="font-bold text-gray-800">X Development LLC (formerly Google[x])</h3>
                             <span className="text-gray-600 text-sm">2021</span>
                         </div>
-                        <div className="flex flex-col sm:flex-row sm:justify-between mb-3">
+                        <div className="flex flex-col sm:flex-row sm:justify-between">
                             <p className="text-gray-700 font-medium">Intern @X</p>
                             <span className="text-gray-600 text-sm">Mountain View, CA</span>
                         </div>
 
                         <ul className="list-disc list-outside ml-5 space-y-2 text-gray-700">
-                            <li>Interned under Project Taara to provide low-cost free-space optical communications (FSOC) internet access for underdeveloped countries.</li>
+                            <li>Interned under Taara, aiming to provide low-cost free-space optical communications (FSOC) internet access for underdeveloped countries.</li>
                             <li>Conducted communications architecture analysis for optically preamplified direct detection and coherent detection techniques.</li>
                             <li>Modeled integrated photonics components to assess the capabilities of each architecture.</li>
                         </ul>
@@ -292,11 +315,11 @@ export default function CV() {
 
                     {/* ieDigital */}
                     <div>
-                        <div className="flex flex-col sm:flex-row sm:justify-between mb-2">
+                        <div className="flex flex-col sm:flex-row sm:justify-between">
                             <h3 className="font-bold text-gray-800">Intelligent Environments Europe Ltd (ieDigital)</h3>
                             <span className="text-gray-600 text-sm">2016</span>
                         </div>
-                        <div className="flex flex-col sm:flex-row sm:justify-between mb-3">
+                        <div className="flex flex-col sm:flex-row sm:justify-between">
                             <p className="text-gray-700 font-medium">Software Developer Intern</p>
                             <span className="text-gray-600 text-sm">London, UK</span>
                         </div>
@@ -313,15 +336,15 @@ export default function CV() {
                 <h2 className="text-2xl font-semibold mb-4 border-gray-200 text-gray-800">Skills</h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
-                        <p className="font-medium text-gray-800 mb-2">Programming Languages</p>
+                        <p className="font-medium text-gray-800">Programming Languages</p>
                         <p className="text-gray-700">Python, C, C++, C#, MATLAB, Verilog</p>
                     </div>
                     <div>
-                        <p className="font-medium text-gray-800 mb-2">Software</p>
+                        <p className="font-medium text-gray-800">Software</p>
                         <p className="text-gray-700">Microsoft Office, SolidWorks, Altium, PyTorch, Docker</p>
                     </div>
                     <div>
-                        <p className="font-medium text-gray-800 mb-2">Languages</p>
+                        <p className="font-medium text-gray-800">Languages</p>
                         <p className="text-gray-700">English (Native), Hindi (Fluent), Korean (Intermediate)</p>
                     </div>
                 </div>
@@ -331,11 +354,11 @@ export default function CV() {
             <section className="mb-10">
                 <h2 className="text-2xl font-semibold mb-4 border-gray-200 text-gray-800">Projects & Extracurricular Activities</h2>
                 <div>
-                    <div className="flex flex-col sm:flex-row sm:justify-between mb-2">
+                    <div className="flex flex-col sm:flex-row sm:justify-between">
                         <h3 className="font-bold text-gray-800">Imperial College London Rocketry</h3>
                         <span className="text-gray-600 text-sm">June 2019 - July 2020</span>
                     </div>
-                    <p className="text-gray-700 font-medium mb-3">Electronics & Payload Team Lead</p>
+                    <p className="text-gray-700 font-medium">Electronics & Payload Team Lead</p>
                     <ul className="list-disc list-outside ml-5 space-y-2 text-gray-700">
                         <li>One of four executive leads of an 80-member team.</li>
                         <li>Led design and manufacture of all rocket electronics, including avionics systems, telemetry, data acquisition, throttle control system, and payload.</li>
@@ -351,7 +374,7 @@ export default function CV() {
                 <div className="space-y-4">
                     {displayGroups.map((group) => (
                         <div key={group.year}>
-                            <h3 className="text-lg font-semibold text-gray-700 mb-2">{group.year}</h3>
+                            <h3 className="text-lg font-semibold text-gray-700">{group.year}</h3>
                             <div className="space-y-4">
                                 {group.pubs.map((pub, index) => (
                                     <a
