@@ -203,7 +203,7 @@ export default function CV() {
         <>
             {/* Education Section */}
             <section className="mb-4">
-                <h2 className="text-2xl font-semibold mb-4 border-gray-200 text-gray-800" id="education">Education</h2>
+                <h2 className="text-2xl font-semibold mb-2 border-gray-200 text-gray-800" id="education">Education</h2>
                 <div className="space-y-4">
                     {/* Combined MIT Education */}
                     <div>
@@ -254,7 +254,7 @@ export default function CV() {
 
             {/* Experience Section */}
             <section className="mb-10">
-                <h2 className="text-2xl font-semibold mb-4 border-gray-200 text-gray-800">Experience</h2>
+                <h2 className="text-2xl font-semibold mb-2 border-gray-200 text-gray-800">Experience</h2>
                 <div className="space-y-6">
                     {/* MIT STAR Lab */}
                     <div>
@@ -333,7 +333,7 @@ export default function CV() {
 
             {/* Skills Section */}
             <section className="mb-10">
-                <h2 className="text-2xl font-semibold mb-4 border-gray-200 text-gray-800">Skills</h2>
+                <h2 className="text-2xl font-semibold mb-2 border-gray-200 text-gray-800">Skills</h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
                         <p className="font-medium text-gray-800">Programming Languages</p>
@@ -352,7 +352,7 @@ export default function CV() {
 
             {/* Projects & Extracurricular Activities Section */}
             <section className="mb-10">
-                <h2 className="text-2xl font-semibold mb-4 border-gray-200 text-gray-800">Projects & Extracurricular Activities</h2>
+                <h2 className="text-2xl font-semibold mb-2 border-gray-200 text-gray-800">Projects & Extracurricular Activities</h2>
                 <div>
                     <div className="flex flex-col sm:flex-row sm:justify-between">
                         <h3 className="font-bold text-gray-800">Imperial College London Rocketry</h3>
@@ -366,9 +366,20 @@ export default function CV() {
                 </div>
             </section>
 
+            {/* Awards Section */}
+            <section className="mb-10">
+                <h2 className="text-2xl font-semibold mb-2 text-gray-800">
+                    Awards
+                </h2>
+                <ul className="list-disc list-outside ml-5 space-y-2 text-gray-700">
+                    <li>Best Paper Award in Small Satellites at AIAA SciTech Forum (2022)</li>
+                    <li>Imperial College London Dean's List (2019)</li>
+                </ul>
+            </section>
+
             {/* Publications Section */}
             <section>
-                <h2 className="text-2xl font-semibold mb-4 text-gray-800">
+                <h2 className="text-2xl font-semibold mb-2 text-gray-800">
                     Publications
                 </h2>
                 <div className="space-y-4">
