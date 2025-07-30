@@ -25,9 +25,6 @@ function Navbar() {
                     <Link href="/about">
                         <Button variant="link" >About</Button>
                     </Link>
-                    <Link href="https://treetrack.xyz/" >
-                        <Button variant="link"><ExternalLink size={16} />Treetrack</Button>
-                    </Link>
                 </nav>
             </div>
         </header>
@@ -67,7 +64,7 @@ export default function RootLayout({ children }) {
                 </Script>
             </head>
             <body>
-                <div className="container px-4 mx-auto">
+                <div className="container mx-auto">
                     <Navbar />
                     <main className="min-h-[calc(100vh-160px)]">{children}</main>
                     <Footer />
