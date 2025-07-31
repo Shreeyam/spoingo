@@ -373,7 +373,7 @@ export default function CV() {
                 </h2>
                 <ul className="list-disc list-outside ml-5 space-y-2 text-gray-700">
                     <li>Best Paper Award in Small Satellites at AIAA SciTech Forum (2022)</li>
-                    <li>Imperial College London Dean's List (2019)</li>
+                    <li>Imperial College London Dean&apos;s List (2019)</li>
                 </ul>
             </section>
 
