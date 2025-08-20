@@ -212,7 +212,7 @@ export default function CV() {
                             <div>
                                 <div className="flex justify-between items-start">
                                     <p className="font-medium text-gray-700">
-                                        PhD Spacecraft Systems and Sensors, minor in AI and Computer Vision
+                                        PhD Aeronautics and Astronautics, minor in AI and Computer Vision
                                     </p>
                                     <span className="text-gray-600 text-sm">2024 - 2025</span>
                                 </div>
