@@ -256,11 +256,30 @@ export default function CV() {
             <section className="mb-10">
                 <h2 className="text-2xl font-semibold mb-2 border-gray-200 text-gray-800">Experience</h2>
                 <div className="space-y-6">
+                    {/* Planet Labs */}
+                    <div>
+                        <div className="flex flex-col sm:flex-row sm:justify-between">
+                            <h3 className="font-bold text-gray-800">Planet Labs</h3>
+                            <span className="text-gray-600 text-sm">2022 - 2024, 2025 - Present</span>
+                        </div>
+                        <div className="flex flex-col sm:flex-row sm:justify-between">
+                            <p className="text-gray-700 font-medium">Edge Compute/Machine Learning Engineer</p>
+                            <span className="text-gray-600 text-sm">San Francisco, CA</span>
+                        </div>
+                        <ul className="list-disc list-outside ml-5 space-y-2 text-gray-700">
+                            <li>Architected next-generation onboard compute platform for Planet’s Earth-observing satellite missions using NVIDIA GPUs as the first hire on the edge compute team</li>
+                            <li>Designed, specified, and developed hardware for a low-power computer vision instrument for onboard autonomy</li>
+                            <li>Wrote and deployed code for autonomous operations stack, including Linux camera drivers, model inference, security infrastructure, and operation with main flight computer</li>
+                            <li>Radiation tested components including NVIDIA Jetson devices at UC Davis cyclotron to qualify hardware for space operations</li>
+                            <li>Trained and distilled vision models for utility estimation for upcoming imaging activities, to be used for autonomous operations</li>
+                            <li>Designed algorithms for onboard autonomous task re-scheduling, data collection and deployment campaign in progress</li>                        </ul>
+                    </div>
+
                     {/* MIT STAR Lab */}
                     <div>
                         <div className="flex flex-col sm:flex-row sm:justify-between">
                             <h3 className="font-bold text-gray-800">MIT Space Telecommunications, Astronomy and Radiation Laboratory</h3>
-                            <span className="text-gray-600 text-sm">2020 - Present</span>
+                            <span className="text-gray-600 text-sm">2020 - 2025</span>
                         </div>
                         <div className="flex flex-col sm:flex-row sm:justify-between">
                             <p className="text-gray-700 font-medium">Research Assistant (PI: Prof. Kerri Cahoy)</p>
@@ -274,25 +293,6 @@ export default function CV() {
                             <li>Designed, trained, tested, and validated vision models for cloud segmentation onboard ESA’s OPS-SAT mission</li>
                             <li>Conducted space environment testing and prototyping with NASA for a novel lasercom pointing and tracking system using liquid lenses, including testing in microgravity on a parabolic flight</li>
                         </ul>
-                    </div>
-
-                    {/* Planet Labs */}
-                    <div>
-                        <div className="flex flex-col sm:flex-row sm:justify-between">
-                            <h3 className="font-bold text-gray-800">Planet Labs</h3>
-                            <span className="text-gray-600 text-sm">2022 - 2024</span>
-                        </div>
-                        <div className="flex flex-col sm:flex-row sm:justify-between">
-                            <p className="text-gray-700 font-medium">Edge Compute/Machine Learning Engineer</p>
-                            <span className="text-gray-600 text-sm">San Francisco, CA</span>
-                        </div>
-                        <ul className="list-disc list-outside ml-5 space-y-2 text-gray-700">
-                            <li>Architected next-generation onboard compute platform for Planet’s Earth-observing satellite missions using NVIDIA GPUs as the first hire on the edge compute team</li>
-                            <li>Designed, specified, and developed hardware for a low-power computer vision instrument for onboard autonomy</li>
-                            <li>Wrote and deployed code for autonomous operations stack, including Linux camera drivers, model inference, security infrastructure, and operation with main flight computer</li>
-                            <li>Radiation tested components including NVIDIA Jetson devices at UC Davis cyclotron to qualify hardware for space operations</li>
-                            <li>Trained and distilled vision models for utility estimation for upcoming imaging activities, to be used for autonomous operations</li>
-                            <li>Designed algorithms for onboard autonomous task re-scheduling, data collection and deployment campaign in progress</li>                        </ul>
                     </div>
 
                     {/* X Development */}
