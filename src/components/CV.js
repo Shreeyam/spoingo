@@ -2,6 +2,7 @@
 import React from 'react';
 import { ExternalLink } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import CVSection from '@/components/CVSection';
 
 export default function CV() {
     // A smarter highlightName that returns an array of strings/React elements.
@@ -202,8 +203,7 @@ export default function CV() {
     return (
         <>
             {/* Education Section */}
-            <section className="mb-4">
-                <h2 className="text-2xl font-semibold mb-2 border-gray-200 text-gray-800" id="education">Education</h2>
+            <CVSection title="Education">
                 <div className="space-y-4">
                     {/* Combined MIT Education */}
                     <div>
@@ -226,7 +226,7 @@ export default function CV() {
                                     <p className="font-medium text-gray-700">SM Aeronautics and Astronautics</p>
                                     <span className="text-gray-600 text-sm">2020 - 2022</span>
                                 </div>
-                                <p className="text-gray-700 mb-1">
+                                <p className="text-gray-700">
                                     <span className="font-medium">GPA:</span> 5.0/5.0
                                 </p>
                                 <p className="text-gray-700">
@@ -241,8 +241,8 @@ export default function CV() {
                             <h3 className="font-bold text-gray-800">Imperial College London</h3>
                             <span className="text-gray-600 text-sm">2016 - 2020</span>
                         </div>
-                        <p className="font-medium text-gray-700 mb-1">MEng Aeronautical Engineering with a Year Abroad</p>
-                        <p className="text-gray-700 mb-1">
+                        <p className="font-medium text-gray-700">MEng Aeronautical Engineering with a Year Abroad</p>
+                        <p className="text-gray-700">
                             <span className="font-medium">Degree Classification:</span> First Class Honours
                         </p>
                         <p className="text-gray-700">
@@ -250,11 +250,10 @@ export default function CV() {
                         </p>
                     </div>
                 </div>
-            </section>
+            </CVSection>
 
             {/* Experience Section */}
-            <section className="mb-10">
-                <h2 className="text-2xl font-semibold mb-2 border-gray-200 text-gray-800">Experience</h2>
+            <CVSection title="Experience">
                 <div className="space-y-6">
                     {/* Planet Labs */}
                     <div>
@@ -329,11 +328,10 @@ export default function CV() {
                         </ul>
                     </div>
                 </div>
-            </section>
+            </CVSection>
 
             {/* Skills Section */}
-            <section className="mb-10">
-                <h2 className="text-2xl font-semibold mb-2 border-gray-200 text-gray-800">Skills</h2>
+            <CVSection title="Skills">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
                         <p className="font-medium text-gray-800">Programming Languages</p>
@@ -348,11 +346,10 @@ export default function CV() {
                         <p className="text-gray-700">English (Native), Hindi (Fluent), Korean (Intermediate)</p>
                     </div>
                 </div>
-            </section>
+            </CVSection>
 
             {/* Projects & Extracurricular Activities Section */}
-            <section className="mb-10">
-                <h2 className="text-2xl font-semibold mb-2 border-gray-200 text-gray-800">Projects & Extracurricular Activities</h2>
+            <CVSection title="Projects & Extracurricular Activities">
                 <div>
                     <div className="flex flex-col sm:flex-row sm:justify-between">
                         <h3 className="font-bold text-gray-800">Imperial College London Rocketry</h3>
@@ -364,24 +361,24 @@ export default function CV() {
                         <li>Led design and manufacture of all rocket electronics, including avionics systems, telemetry, data acquisition, throttle control system, and payload.</li>
                     </ul>
                 </div>
-            </section>
+            </CVSection>
 
             {/* Awards Section */}
-            <section className="mb-10">
-                <h2 className="text-2xl font-semibold mb-2 text-gray-800">
-                    Awards
-                </h2>
+            <CVSection title="Awards">
                 <ul className="list-disc list-outside ml-5 space-y-2 text-gray-700">
                     <li>Best Paper Award in Small Satellites at AIAA SciTech Forum (2022)</li>
                     <li>Imperial College London Dean&apos;s List (2019)</li>
                 </ul>
-            </section>
+            </CVSection>
+
+            <CVSection title="Invited Talks">
+                <ul className="list-disc list-outside ml-5 space-y-2 text-gray-700">
+                    <li>NASA Jet Propulsion Laboratory, "Dynamic Tasking with Agile Lookahead for Tasked Earth-Observing Satellites" (2025)</li>
+                </ul>
+            </CVSection>
 
             {/* Publications Section */}
-            <section>
-                <h2 className="text-2xl font-semibold mb-2 text-gray-800">
-                    Publications
-                </h2>
+            <CVSection title="Publications">
                 <div className="space-y-4">
                     {displayGroups.map((group) => (
                         <div key={group.year}>
@@ -415,7 +412,7 @@ export default function CV() {
                         </Button>
                     </div>
                 )}
-            </section>
+            </CVSection>
         </>
     );
 }
