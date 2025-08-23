@@ -373,7 +373,7 @@ export default function CV() {
 
             <CVSection title="Invited Talks">
                 <ul className="list-disc list-outside ml-5 space-y-2 text-gray-700">
-                    <li>NASA Jet Propulsion Laboratory, "Dynamic Tasking with Agile Lookahead for Tasked Earth-Observing Satellites" (2025)</li>
+                    <li>NASA Jet Propulsion Laboratory, &quot;Dynamic Tasking with Agile Lookahead for Tasked Earth-Observing Satellites&quot; (2025)</li>
                 </ul>
             </CVSection>
 
