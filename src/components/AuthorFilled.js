@@ -1,58 +1,84 @@
 import React from 'react';
 import AuthorBlock from '@/components/ui/authorcard';
 import Link from 'next/link';
-import { MapPin, Github, GraduationCap, Link2, Instagram, BriefcaseBusiness, Linkedin, Globe} from 'lucide-react';
-import { Separator } from '@/components/ui/separator'; // shadcn separator component
+import { MapPin, Github, GraduationCap, Link2, Instagram, BriefcaseBusiness, Linkedin, Globe, Twitter, Youtube } from 'lucide-react';
+import { Separator } from '@/components/ui/separator';
+import siteConfig from '@/config/siteConfig';
+
+// Map social platform names to their icons
+const socialIcons = {
+    linkedin: Linkedin,
+    github: Github,
+    googleScholar: GraduationCap,
+    orcid: Globe,
+    twitter: Twitter,
+    instagram: Instagram,
+    youtube: Youtube,
+    website: Link2,
+};
+
+// Display names for social platforms
+const socialNames = {
+    linkedin: 'LinkedIn',
+    github: 'Github',
+    googleScholar: 'Google Scholar',
+    orcid: 'ORCID',
+    twitter: 'Twitter',
+    instagram: 'Instagram',
+    youtube: 'YouTube',
+    website: 'Website',
+};
 
 export default function AuthorFilled() {
+    const { author, social } = siteConfig;
+
+    // Filter out null/undefined social links
+    const activeSocials = Object.entries(social).filter(([_, url]) => url);
+
     return (
-        <AuthorBlock avatarUrl="/me.jpg" authorName="Shreeyam Kacker" > 
+        <AuthorBlock avatarUrl={author.avatar} authorName={author.name}>
             {/* Info section */}
             <div className="flex flex-col space-y-2">
-                <div className="flex items-center space-x-2">
-                    <MapPin size={16} />
-                    <span>San Francisco</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                    <BriefcaseBusiness size={16} />
-                    <span>Planet Labs</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                    <GraduationCap size={16} />
-                    <span>MIT</span>
-                </div>
+                {author.location && (
+                    <div className="flex items-center space-x-2">
+                        <MapPin size={16} />
+                        <span>{author.location}</span>
+                    </div>
+                )}
+                {author.currentJob && (
+                    <div className="flex items-center space-x-2">
+                        <BriefcaseBusiness size={16} />
+                        <span>{author.currentJob}</span>
+                    </div>
+                )}
+                {author.education && (
+                    <div className="flex items-center space-x-2">
+                        <GraduationCap size={16} />
+                        <span>{author.education}</span>
+                    </div>
+                )}
             </div>
 
             {/* Separator */}
-            <Separator className="my-2" />
+            {activeSocials.length > 0 && <Separator className="my-2" />}
 
             {/* Links section */}
             <div className="flex flex-col space-y-2">
-                <Link href="https://linkedin.com/in/shreeyam" target="_blank" className="flex items-center space-x-2 hover:underline">
-                    <Linkedin size={16} />
-                    <span>LinkedIn</span>
-                </Link>
-                <Link
-                    href="https://github.com/shreeyam" target="_blank"
-                    className="flex items-center space-x-2 hover:underline"
-                >
-                    <Github size={16} />
-                    <span>Github</span>
-                </Link>
-                <Link
-                    href="https://scholar.google.com/citations?user=qkepsdMAAAAJ&amp;hl=en" target="_blank"
-                    className="flex items-center space-x-2 hover:underline"
-                >
-                    <GraduationCap size={16} />
-                    <span>Google Scholar</span>
-                </Link>
-                <Link
-                    href="https://orcid.org/0000-0002-7227-4946" target="_blank"
-                    className="flex items-center space-x-2 hover:underline"
-                >
-                    <Globe size={16} />
-                    <span>ORCID</span>
-                </Link>
+                {activeSocials.map(([platform, url]) => {
+                    const Icon = socialIcons[platform] || Link2;
+                    const name = socialNames[platform] || platform;
+                    return (
+                        <Link
+                            key={platform}
+                            href={url}
+                            target="_blank"
+                            className="flex items-center space-x-2 hover:underline"
+                        >
+                            <Icon size={16} />
+                            <span>{name}</span>
+                        </Link>
+                    );
+                })}
             </div>
         </AuthorBlock>
     );

@@ -5,10 +5,11 @@ import { Button } from '@/components/ui/button';
 import { ExternalLink } from 'lucide-react';
 import ExtLink from '@/components/ui/externallink';
 import Script from 'next/script';
+import siteConfig from '@/config/siteConfig';
 
 export const metadata = {
-    title: 'Shreeyam\'s Page',
-    description: 'Shreeyam\'s personal website',
+    title: siteConfig.site.title,
+    description: siteConfig.site.description,
 };
 
 function Navbar() {
@@ -16,7 +17,7 @@ function Navbar() {
         <header className="border-b">
             <div className="container mx-auto flex items-center justify-between px-4 py-4">
                 <Link href="/" className="text-xl font-bold">
-                    Shreeyam&apos;s Page
+                    {siteConfig.site.title}
                 </Link>
                 <nav className="space-x-4 ">
                     <Link href="/blog" >
@@ -36,7 +37,10 @@ function Footer() {
         <footer className="border-t">
             <div className="container mx-auto px-4 py-4 text-center">
                 <p className="text-sm text-muted-foreground">
-                    © {new Date().getFullYear()} Shreeyam Kacker. Powered by <ExtLink href="https://www.github.com/Shreeyam/spoingo">Spoingo</ExtLink>.
+                    &copy; {new Date().getFullYear()} {siteConfig.footer.copyright}.{' '}
+                    {siteConfig.footer.poweredBy && (
+                        <>Powered by <ExtLink href={siteConfig.footer.poweredBy.url}>{siteConfig.footer.poweredBy.name}</ExtLink>.</>
+                    )}
                 </p>
             </div>
         </footer>
@@ -45,7 +49,7 @@ function Footer() {
 
 export default function RootLayout({ children }) {
     return (
-        <html lang="en">
+        <html lang={siteConfig.site.language}>
             <head>
                 {/* Google Analytics */}
                 <Script
