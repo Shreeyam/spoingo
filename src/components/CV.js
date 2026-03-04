@@ -37,6 +37,7 @@ export default function CV() {
     const displayGroups = showAll ? groupedPublications : groupedPublications.slice(0, 3);
 
     // Check if there's any CV content to display
+    const hasResearchInterests = cv.researchInterests && cv.researchInterests.length > 0;
     const hasEducation = cv.education && cv.education.length > 0;
     const hasExperience = cv.experience && cv.experience.length > 0;
     const hasSkills = cv.skills && (cv.skills.programmingLanguages || cv.skills.software || cv.skills.languages);
@@ -46,7 +47,7 @@ export default function CV() {
     const hasPublications = publications.length > 0;
 
     // If nothing to show, return null
-    if (!hasEducation && !hasExperience && !hasSkills && !hasProjects && !hasAwards && !hasTalks && !hasPublications) {
+    if (!hasResearchInterests && !hasEducation && !hasExperience && !hasSkills && !hasProjects && !hasAwards && !hasTalks && !hasPublications) {
         return null;
     }
 
@@ -140,6 +141,19 @@ export default function CV() {
                             <p className="text-gray-700">{cv.skills.languages}</p>
                         </div>
                     )}
+                </div>
+            </CVSection>
+            )}
+
+            {/* Research Interests Section */}
+            {hasResearchInterests && (
+            <CVSection title="Research Interests">
+                <div className="flex flex-wrap gap-2">
+                    {cv.researchInterests.map((interest, index) => (
+                        <span key={index} className="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm">
+                            {interest}
+                        </span>
+                    ))}
                 </div>
             </CVSection>
             )}
