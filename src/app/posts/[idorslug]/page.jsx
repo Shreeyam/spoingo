@@ -58,8 +58,8 @@ export default async function PostPage({ params }) {
 
                 {/* Title and meta section */}
                 <div className="mb-8 text-center">
-                    <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 leading-tight">{post.title}</h1>
-                    <div className="flex flex-wrap items-center justify-center text-sm text-gray-500 gap-4">
+                    <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4 leading-tight">{post.title}</h1>
+                    <div className="flex flex-wrap items-center justify-center text-sm text-muted-foreground gap-4">
                         {post.author && (
                             <div className="flex items-center">
                                 <User size={16} className="mr-1" />
@@ -75,7 +75,7 @@ export default async function PostPage({ params }) {
                 </div>
 
                 {/* Main content */}
-                <article className="prose lg:prose-lg xl:prose-xl mx-auto prose-headings:font-bold prose-headings:text-gray-800 prose-p:text-gray-800">
+                <article className="prose lg:prose-lg xl:prose-xl mx-auto prose-headings:font-bold prose-headings:text-foreground prose-p:text-foreground">
                     <CustomMarkdown markdown={post.content} />
                 </article>
 
@@ -86,7 +86,7 @@ export default async function PostPage({ params }) {
                             <Button variant="ghost" className="flex items-center text-left group">
                                 <MoveLeft size={20} className="mr-2 group-hover:transform group-hover:-translate-x-1 transition-transform" />
                                 <div>
-                                    <div className="text-xs text-gray-600">Previous</div>
+                                    <div className="text-xs text-muted-foreground">Previous</div>
                                 </div>
                             </Button>
                         </Link>
@@ -98,7 +98,7 @@ export default async function PostPage({ params }) {
                         <Link href={`/posts/${nextPostID}`} passHref>
                             <Button variant="ghost" className="flex items-center text-right group">
                                 <div>
-                                    <div className="text-xs text-gray-600">Next</div>
+                                    <div className="text-xs text-muted-foreground">Next</div>
                                 </div>
                                 <MoveRight size={20} className="ml-2 group-hover:transform group-hover:translate-x-1 transition-transform" />
                             </Button>

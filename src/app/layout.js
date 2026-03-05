@@ -2,7 +2,6 @@
 import '@/components/globals.css'; // Optional: import global styles
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { ExternalLink } from 'lucide-react';
 import ExtLink from '@/components/ui/externallink';
 import Script from 'next/script';
 import siteConfig from '@/config/siteConfig';

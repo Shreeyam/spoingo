@@ -30,7 +30,7 @@ export default function PostCard({ post, galleryMode = false }) {
                         </div>
                         <CardContent className="flex flex-col justify-start mt-2 p-0">
                             {/* Date on top */}
-                            <p className="text-sm text-gray-500 mb-1">
+                            <p className="text-sm text-muted-foreground mb-1">
                                 {new Date(post.published_at).toISOString().split('T')[0]}
                             </p>
                             {/* Title with two lines max */}
@@ -48,7 +48,7 @@ export default function PostCard({ post, galleryMode = false }) {
                             {post.author && (
                                 <div className="mt-2 flex items-center">
                                     <User className="w-4 h-4 mr-1" />
-                                    <span className="text-sm text-gray-500">{post.author}</span>
+                                    <span className="text-sm text-muted-foreground">{post.author}</span>
                                 </div>
                             )}
                         </CardContent>
@@ -83,13 +83,13 @@ export default function PostCard({ post, galleryMode = false }) {
                                 >
                                     {post.title}
                                 </CardTitle>
-                                <p className="text-sm text-gray-500 flex-shrink-0">
+                                <p className="text-sm text-muted-foreground flex-shrink-0">
                                     {new Date(post.published_at).toISOString().split('T')[0]}
                                 </p>
                             </div>
                             {/* Preview text */}
                             {post.preview && (
-                                <p className="mt-2 text-gray-700 text-sm">
+                                <p className="mt-2 text-foreground/80 text-sm">
                                     {post.preview}
                                 </p>
                             )}
@@ -97,7 +97,7 @@ export default function PostCard({ post, galleryMode = false }) {
                             {post.author && (
                                 <div className="mt-2 flex items-center">
                                     <User className="w-4 h-4 mr-1" />
-                                    <span className="text-sm text-gray-500">{post.author}</span>
+                                    <span className="text-sm text-muted-foreground">{post.author}</span>
                                 </div>
                             )}
                         </CardContent>

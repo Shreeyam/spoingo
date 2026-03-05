@@ -62,7 +62,7 @@ const siteConfig = {
         intro: "Hey, I'm Shreeyam. I build safe, verifiable autonomy that lets spacecraft think for themselves.",
 
         paragraphs: [
-            `I am a PhD graduate from MIT's <a href="https://aeroastro.mit.edu/starlab/" target="_blank" class="underline hover:text-primary">STAR Lab</a> with PI Prof. Kerri Cahoy. I work on space robotics, autonomous systems, instrumentation, and machine learning applied to spacecraft. My PhD was on dynamic tasking formulations for Earth-observing satellites funded by <a href="https://www.planet.com/" target="_blank" class="underline hover:text-primary">Planet Labs</a> so we can use existing satellites more effectively through improved perception, onboard planning, and edge computing. My research specifically focuses on safe and verifiable autonomy formulations that can be operationalized in space. I have also conducted research on reinforcement learning for electromagnetic formation flying spacecraft, vision models for remote sensing, and utilizing liquid lenses for laser communications.`,
+            `I am a PhD graduate from MIT's <a href="https://aeroastro.mit.edu/starlab/" target="_blank" class="underline hover:text-primary">STAR Lab</a> with PI Prof. Kerri Cahoy. I am a machine learning researcher working on space robotics, instrumentation, and autonomous space systems. My PhD was on autonomous tasking formulations for Earth-observing satellites funded by <a href="https://www.planet.com/" target="_blank" class="underline hover:text-primary">Planet Labs</a> so we can use existing satellites more effectively through improved perception, onboard planning, and edge computing. My research specifically focuses on safe and verifiable autonomy formulations that can be operationalized in space. I have also conducted research on reinforcement learning for electromagnetic formation flying spacecraft, vision models for remote sensing, and utilizing liquid lenses for laser communications.`,
 
             `I currently work at Planet Labs as an Edge Compute/Machine Learning Engineer. I have worked on Pelican's onboard compute system on the <a href="https://investors.planet.com/news/news-details/2024/Planet-Labs-PBC-Announces-Real-Time-Insights-Technology-Using-NVIDIA-Jetson-Platform/default.aspx" target="_blank" class="underline hover:text-primary">NVIDIA Jetson platform</a>, as the first employee on the Edge Compute team. My previous experience includes integrated photonics at <a href="https://x.company/" target="_blank" class="underline hover:text-primary">X, the moonshot factory</a> (formerly Google [x]), and I also led all onboard electronics development for <a href="https://imperialrocketry.com/" target="_blank" class="underline hover:text-primary">Imperial College London Rocketry</a>.`,
 
@@ -80,8 +80,8 @@ const siteConfig = {
             "Computer Vision",
             "Reinforcement Learning",
             "Edge ML Deployment",
-            "Remote Sensing",
             "Multi-Agent Systems",
+            "Remote Sensing",
             "Autonomous Spacecraft",
         ],
 
@@ -157,16 +157,16 @@ const siteConfig = {
                     "Modeled integrated photonics components to assess the capabilities of each architecture.",
                 ],
             },
-            {
-                company: "Intelligent Environments Europe Ltd (ieDigital)",
-                title: "Software Developer Intern",
-                location: "London, UK",
-                years: "2016",
-                bullets: [
-                    "Worked as a full stack software developer intern writing C# across teams managed under agile methodology.",
-                    "Automated part of the workflow for business analysts using Python, saving tens of hours on importing old functional specifications into JIRA.",
-                ],
-            },
+            // {
+            //     company: "Intelligent Environments Europe Ltd (ieDigital)",
+            //     title: "Software Developer Intern",
+            //     location: "London, UK",
+            //     years: "2016",
+            //     bullets: [
+            //         "Worked as a full stack software developer intern writing C# across teams managed under agile methodology.",
+            //         "Automated part of the workflow for business analysts using Python, saving tens of hours on importing old functional specifications into JIRA.",
+            //     ],
+            // },
         ],
 
         // Skills
@@ -181,7 +181,7 @@ const siteConfig = {
             {
                 name: "Imperial College London Rocketry",
                 role: "Electronics & Payload Team Lead",
-                years: "June 2019 - July 2020",
+                years: "2019 - 2020",
                 bullets: [
                     "One of four executive leads of an 80-member team.",
                     "Led design and manufacture of all rocket electronics, including avionics systems, telemetry, data acquisition, throttle control system, and payload.",
@@ -326,22 +326,22 @@ const siteConfig = {
             {
                 title: "Vision-Based Dynamic Tasking for Earth-Observing Satellite Constellations",
                 authors: "Shreeyam Kacker, Kiruthika Devaraj, Işil Demir, Steve Chien, Kerri Cahoy",
-                note: "39th Annual AIAA/USU Conference on Small Satellites (forthcoming)",
+                note: "39th Annual AIAA/USU Conference on Small Satellites",
                 year: 2025,
                 url: "https://digitalcommons.usu.edu/",
             },
             {
                 title: "Deep Reinforcement Learning for Multi-Agent Spacecraft Electromagnetic Formation Flight",
                 authors: "J Biberstein, Shreeyam Kacker, Kerri Cahoy, S Karaman",
-                note: "in prepation",
+                note: "International Conference on Space Robotics 2025",
                 year: 2025,
                 url: "",
             },
             {
-                title: "Vision Language Models for Single Shot Scene Understanding and Dynamic Tasking of Agile Earth-Observing Satellites",
+                title: "Differentiable Constellation Design via Relaxed Coverage and Revisit Objectives",
                 authors: "Shreeyam Kacker, Kerri Cahoy",
-                note: "in prepation",
-                year: 2025,
+                note: "in prep.",
+                year: 2026,
                 url: "",
             },
         ],

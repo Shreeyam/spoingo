@@ -60,28 +60,28 @@ export default function CV() {
                     {cv.education.map((edu, eduIndex) => (
                         <div key={eduIndex}>
                             <div className="flex justify-between items-start">
-                                <h3 className="font-bold text-gray-800">{edu.institution}</h3>
-                                {edu.years && <span className="text-gray-600 text-sm">{edu.years}</span>}
+                                <h3 className="font-bold text-foreground">{edu.institution}</h3>
+                                {edu.years && <span className="text-muted-foreground text-sm">{edu.years}</span>}
                             </div>
                             <div className="space-y-4">
                                 {edu.degrees.map((degree, degIndex) => (
                                     <div key={degIndex}>
                                         <div className="flex justify-between items-start">
-                                            <p className="font-medium text-gray-700">{degree.title}</p>
-                                            {degree.years && <span className="text-gray-600 text-sm">{degree.years}</span>}
+                                            <p className="font-medium text-foreground/80">{degree.title}</p>
+                                            {degree.years && <span className="text-muted-foreground text-sm">{degree.years}</span>}
                                         </div>
                                         {degree.gpa && (
-                                            <p className="text-gray-700">
+                                            <p className="text-foreground/80">
                                                 <span className="font-medium">GPA:</span> {degree.gpa}
                                             </p>
                                         )}
                                         {degree.classification && (
-                                            <p className="text-gray-700">
+                                            <p className="text-foreground/80">
                                                 <span className="font-medium">Degree Classification:</span> {degree.classification}
                                             </p>
                                         )}
                                         {degree.thesis && (
-                                            <p className="text-gray-700">
+                                            <p className="text-foreground/80">
                                                 <span className="font-medium">Thesis:</span> {degree.thesis}
                                             </p>
                                         )}
@@ -101,14 +101,14 @@ export default function CV() {
                     {cv.experience.map((exp, index) => (
                         <div key={index}>
                             <div className="flex flex-col sm:flex-row sm:justify-between">
-                                <h3 className="font-bold text-gray-800">{exp.company}</h3>
-                                <span className="text-gray-600 text-sm">{exp.years}</span>
+                                <h3 className="font-bold text-foreground">{exp.company}</h3>
+                                <span className="text-muted-foreground text-sm">{exp.years}</span>
                             </div>
                             <div className="flex flex-col sm:flex-row sm:justify-between">
-                                <p className="text-gray-700 font-medium">{exp.title}</p>
-                                <span className="text-gray-600 text-sm">{exp.location}</span>
+                                <p className="text-foreground/80 font-medium">{exp.title}</p>
+                                <span className="text-muted-foreground text-sm">{exp.location}</span>
                             </div>
-                            <ul className="list-disc list-outside ml-5 space-y-2 text-gray-700">
+                            <ul className="list-disc list-outside ml-5 space-y-2 text-foreground/80">
                                 {exp.bullets.map((bullet, bulletIndex) => (
                                     <li key={bulletIndex}>{bullet}</li>
                                 ))}
@@ -125,20 +125,20 @@ export default function CV() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     {cv.skills.programmingLanguages && (
                         <div>
-                            <p className="font-medium text-gray-800">Programming Languages</p>
-                            <p className="text-gray-700">{cv.skills.programmingLanguages}</p>
+                            <p className="font-medium text-foreground">Programming Languages</p>
+                            <p className="text-foreground/80">{cv.skills.programmingLanguages}</p>
                         </div>
                     )}
                     {cv.skills.software && (
                         <div>
-                            <p className="font-medium text-gray-800">Software</p>
-                            <p className="text-gray-700">{cv.skills.software}</p>
+                            <p className="font-medium text-foreground">Software</p>
+                            <p className="text-foreground/80">{cv.skills.software}</p>
                         </div>
                     )}
                     {cv.skills.languages && (
                         <div>
-                            <p className="font-medium text-gray-800">Languages</p>
-                            <p className="text-gray-700">{cv.skills.languages}</p>
+                            <p className="font-medium text-foreground">Languages</p>
+                            <p className="text-foreground/80">{cv.skills.languages}</p>
                         </div>
                     )}
                 </div>
@@ -150,7 +150,7 @@ export default function CV() {
             <CVSection title="Research Interests">
                 <div className="flex flex-wrap gap-2">
                     {cv.researchInterests.map((interest, index) => (
-                        <span key={index} className="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm">
+                        <span key={index} className="px-3 py-1 bg-muted text-foreground/80 rounded-full text-sm">
                             {interest}
                         </span>
                     ))}
@@ -164,11 +164,11 @@ export default function CV() {
                     {cv.projects.map((project, index) => (
                         <div key={index}>
                             <div className="flex flex-col sm:flex-row sm:justify-between">
-                                <h3 className="font-bold text-gray-800">{project.name}</h3>
-                                <span className="text-gray-600 text-sm">{project.years}</span>
+                                <h3 className="font-bold text-foreground">{project.name}</h3>
+                                <span className="text-muted-foreground text-sm">{project.years}</span>
                             </div>
-                            <p className="text-gray-700 font-medium">{project.role}</p>
-                            <ul className="list-disc list-outside ml-5 space-y-2 text-gray-700">
+                            <p className="text-foreground/80 font-medium">{project.role}</p>
+                            <ul className="list-disc list-outside ml-5 space-y-2 text-foreground/80">
                                 {project.bullets.map((bullet, bulletIndex) => (
                                     <li key={bulletIndex}>{bullet}</li>
                                 ))}
@@ -181,7 +181,7 @@ export default function CV() {
             {/* Awards Section */}
             {hasAwards && (
                 <CVSection title="Awards">
-                    <ul className="list-disc list-outside ml-5 space-y-2 text-gray-700">
+                    <ul className="list-disc list-outside ml-5 space-y-2 text-foreground/80">
                         {cv.awards.map((award, index) => (
                             <li key={index}>{award}</li>
                         ))}
@@ -192,7 +192,7 @@ export default function CV() {
             {/* Invited Talks Section */}
             {hasTalks && (
                 <CVSection title="Invited Talks">
-                    <ul className="list-disc list-outside ml-5 space-y-2 text-gray-700">
+                    <ul className="list-disc list-outside ml-5 space-y-2 text-foreground/80">
                         {cv.invitedTalks.map((talk, index) => (
                             <li key={index}>{talk}</li>
                         ))}
@@ -206,7 +206,7 @@ export default function CV() {
                     <div className="space-y-4">
                         {displayGroups.map((group) => (
                             <div key={group.year}>
-                                <h3 className="text-lg font-semibold text-gray-700">{group.year}</h3>
+                                <h3 className="text-lg font-semibold text-foreground/80">{group.year}</h3>
                                 <div className="space-y-4">
                                     {group.pubs.map((pub, index) => (
                                         <a
@@ -220,9 +220,9 @@ export default function CV() {
                                             <div className="absolute bottom-2 right-2 opacity-0 group-hover:opacity-100">
                                                 <ExternalLink size={16} />
                                             </div>
-                                            <p className="font-medium text-gray-800 mb-1">{pub.title}</p>
-                                            <p className="text-gray-700 mb-1" dangerouslySetInnerHTML={{ __html: highlightName(pub.authors) }}></p>
-                                            <p className="text-gray-600 text-sm italic">{pub.note}</p>
+                                            <p className="font-medium text-foreground mb-1">{pub.title}</p>
+                                            <p className="text-foreground/80 mb-1" dangerouslySetInnerHTML={{ __html: highlightName(pub.authors) }}></p>
+                                            <p className="text-muted-foreground text-sm italic">{pub.note}</p>
                                         </a>
                                     ))}
                                 </div>

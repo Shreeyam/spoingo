@@ -6,7 +6,7 @@ export default function Biography({ showAbout = false }) {
     const { author, biography } = siteConfig;
 
     return (
-        <div className="max-w-5xl mx-auto prose text-(--foreground)">
+        <div className="max-w-5xl mx-auto prose text-foreground">
             {biography.intro}
             <br />
             <br />
