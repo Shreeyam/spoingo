@@ -9,7 +9,6 @@ import siteConfig from '@/config/siteConfig';
 export default function About() {
     const { biography, cv } = siteConfig;
     const publications = [...(cv?.publications || [])]
-        .filter((pub) => pub.selected)
         .sort((a, b) => (b.sortYear || b.year || 0) - (a.sortYear || a.year || 0));
     const otherParagraphs = biography.paragraphs.slice(2);
 
@@ -83,7 +82,7 @@ export default function About() {
                 )}
 
                 {publications.length > 0 && (
-                    <PageSection id="publications" title="Selected Publications" headingClassName="mb-5">
+                    <PageSection id="publications" title="Publications" headingClassName="mb-5">
                         <div className="space-y-6">
                             {publications.map((pub) => (
                                 <PublicationCard key={`${pub.title}-${pub.year}`} pub={pub} />
