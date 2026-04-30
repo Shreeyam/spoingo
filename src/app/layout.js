@@ -1,7 +1,6 @@
 // src/app/layout.js
 import '@/components/globals.css'; // Optional: import global styles
 import Link from 'next/link';
-import { Button } from '@/components/ui/button';
 import ExtLink from '@/components/ui/externallink';
 import Script from 'next/script';
 import siteConfig from '@/config/siteConfig';
@@ -13,17 +12,17 @@ export const metadata = {
 
 function Navbar() {
     return (
-        <header className="border-b">
-            <div className="container mx-auto flex items-center justify-between px-4 py-4">
-                <Link href="/" className="text-xl font-bold">
-                    {siteConfig.site.title}
-                </Link>
-                <nav className="space-x-4 ">
-                    <Link href="/blog" >
-                        <Button variant="link">Blog</Button>
+        <header>
+            <div className="container mx-auto flex items-center justify-end px-4 py-4">
+                <nav className="flex items-center gap-8 text-sm">
+                    <Link href="/" className="hover:underline underline-offset-2">
+                        Home
                     </Link>
-                    <Link href="/about">
-                        <Button variant="link" >About</Button>
+                    <Link href="/blog" className="hover:underline underline-offset-2">
+                        Blog
+                    </Link>
+                    <Link href="/about" className="hover:underline underline-offset-2">
+                        About
                     </Link>
                 </nav>
             </div>

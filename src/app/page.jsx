@@ -1,33 +1,57 @@
-// src/app/page.jsx
+import Link from 'next/link';
+import AuthorHeader from '@/components/AuthorHeader';
+import IntroParagraphs from '@/components/IntroParagraphs';
 import Layout from '@/components/Layout';
-import PaginatedPostList from '@/components/PaginatedPostList';
-import AuthorFilled from '@/components/AuthorFilled';
-import Biography from '@/components/Biography';
-import { Separator } from '@/components/ui/separator';
-import { getPostsPaginated } from '@/lib/db';
+import PageArticle from '@/components/PageArticle';
+import PageSection from '@/components/PageSection';
+import PublicationCard from '@/components/PublicationCard';
+import ResearchCard from '@/components/ResearchCard';
+import siteConfig from '@/config/siteConfig';
+
 export const revalidate = 300;
 
 export default async function HomePage() {
-    // Await the asynchronous call to getPosts.
-    const initialPosts = await getPostsPaginated();
+    const { biography, cv } = siteConfig;
+
+    const selected = (cv?.publications || [])
+        .filter((p) => p.selected)
+        .sort((a, b) => (b.sortYear || b.year || 0) - (a.sortYear || a.year || 0));
 
     return (
         <Layout>
-            <div className="max-w-5xl mx-auto px-4 py-8">
-                <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-                    {/* Author card in one column */}
-                    <div className="md:col-span-1">
-                        <AuthorFilled />
-                    </div>
-                    {/* Posts take up three columns */}
-                    <div className="md:col-span-3">
-                        <Biography showAbout={true} />
-                        <Separator className="my-2" />
-                        <h1 className="text-3xl font-bold mb-4">Latest Posts</h1>
-                        <PaginatedPostList initialPosts={initialPosts} galleryMode={false} />
-                    </div>
-                </div>
-            </div>
+            <PageArticle>
+                <AuthorHeader />
+
+                <IntroParagraphs paragraphs={biography.paragraphs} count={2} />
+
+                {cv?.selectedResearch?.length > 0 && (
+                    <PageSection title="Selected Research">
+                        <div className="space-y-4">
+                            {cv.selectedResearch.map((item) => (
+                                <ResearchCard key={item.title} item={item} />
+                            ))}
+                        </div>
+                    </PageSection>
+                )}
+
+                {selected.length > 0 && (
+                    <PageSection title="Publications" headingClassName="mb-5">
+                        <div className="space-y-6">
+                            {selected.map((pub, i) => (
+                                <PublicationCard key={i} pub={pub} />
+                            ))}
+                        </div>
+                        <p className="mt-6 text-sm">
+                            <Link
+                                href="/about#publications"
+                                className="hover:underline underline-offset-2"
+                            >
+                                See all publications →
+                            </Link>
+                        </p>
+                    </PageSection>
+                )}
+            </PageArticle>
         </Layout>
     );
 }

@@ -3,7 +3,7 @@ import Link from 'next/link';
 import siteConfig from '@/config/siteConfig';
 
 export default function Biography({ showAbout = false }) {
-    const { author, biography } = siteConfig;
+    const { biography } = siteConfig;
 
     return (
         <div className="max-w-5xl mx-auto prose text-foreground">
@@ -26,9 +26,6 @@ export default function Biography({ showAbout = false }) {
                     )}
                 </React.Fragment>
             ))}
-            <br />
-            <br />
-            Contact: {author.email}
         </div>
     );
 }

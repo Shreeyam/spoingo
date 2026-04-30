@@ -41,6 +41,8 @@ yarn-error.log*
 next-env.d.ts
 
 /public/**/*
+!/public/blue-globe-poster.png
+!/public/blue-globe.webm
 
 # database files
 *.db

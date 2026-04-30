@@ -10,8 +10,8 @@ const siteConfig = {
     // SITE METADATA
     // ===================
     site: {
-        title: "Shreeyam's Page",
-        description: "Shreeyam Kacker -- computer vision, reinforcement learning, edge ML, remote sensing, autonomous spacecraft.",
+        title: "Shreeyam Kacker",
+        description: "Shreeyam Kacker",
         language: "en",
     },
 
@@ -59,12 +59,12 @@ const siteConfig = {
     // ===================
     // Use HTML for formatting. Available placeholders: none (write full HTML)
     biography: {
-        intro: "Hey, I'm Shreeyam. I build safe, verifiable autonomy that lets spacecraft think for themselves.",
+        intro: "",
 
         paragraphs: [
-            `I am a PhD graduate from MIT's <a href="https://aeroastro.mit.edu/starlab/" target="_blank" class="underline hover:text-primary">STAR Lab</a> with PI Prof. Kerri Cahoy. I am a machine learning researcher working on space robotics, instrumentation, and autonomous space systems. My PhD was on autonomous tasking formulations for Earth-observing satellites funded by <a href="https://www.planet.com/" target="_blank" class="underline hover:text-primary">Planet Labs</a> so we can use existing satellites more effectively through improved perception, onboard planning, and edge computing. My research specifically focuses on safe and verifiable autonomy formulations that can be operationalized in space. I have also conducted research on reinforcement learning for electromagnetic formation flying spacecraft, vision models for remote sensing, and utilizing liquid lenses for laser communications.`,
+            `Hey, I'm Shreeyam. I am a machine learning researcher working on representation learning and planning for autonomous systems. I received my PhD from MIT's <a href="https://aeroastro.mit.edu/starlab/" target="_blank" class="underline hover:text-primary">STAR Lab</a>, with PI Prof. Kerri Cahoy, where my research focused on autonomous tasking formulations for Earth-observing satellites using computer vision, onboard planning, and edge ML.`,
 
-            `I currently work at Planet Labs as an Edge Compute/Machine Learning Engineer. I have worked on Pelican's onboard compute system on the <a href="https://investors.planet.com/news/news-details/2024/Planet-Labs-PBC-Announces-Real-Time-Insights-Technology-Using-NVIDIA-Jetson-Platform/default.aspx" target="_blank" class="underline hover:text-primary">NVIDIA Jetson platform</a>, as the first employee on the Edge Compute team. My previous experience includes integrated photonics at <a href="https://x.company/" target="_blank" class="underline hover:text-primary">X, the moonshot factory</a> (formerly Google [x]), and I also led all onboard electronics development for <a href="https://imperialrocketry.com/" target="_blank" class="underline hover:text-primary">Imperial College London Rocketry</a>.`,
+            `At Planet, I work on onboard ML and edge compute and autonomy for high resolution Earth-observing satellites. My previous experience also includes photonics at <a href="https://x.company/" target="_blank" class="underline hover:text-primary">X, the moonshot factory</a> (formerly Google [x]).`,
 
             `I started this blog for technical sewing projects. There are countless blogs from the early to mid 2010s that have been invaluable to my sewing journey, and I hope to contribute to that body of knowledge. I might occasionally write about fashion, research, or other topics also.`,
 
@@ -76,13 +76,30 @@ const siteConfig = {
     // CV DATA
     // ===================
     cv: {
+        selectedResearch: [
+            {
+                title: "Differentiable Satellite Constellation Configuration",
+                subtitle: "Relaxed coverage and revisit objectives for Earth-observing satellite design",
+                description: "A composition of differentiable orbit propagation and relaxed variants of mission metrics can be used to directly optimize mission-level objectives.",
+                media: {
+                    src: "/blue-globe.webm",
+                    poster: "/blue-globe-poster.png",
+                    alt: "Animated satellite constellation optimization around a blue globe",
+                },
+                links: [
+                    { label: "paper", href: "https://arxiv.org/abs/2604.19062" },
+                    { label: "code", href: "https://github.com/Shreeyam/differentiable_eo" },
+                ],
+            },
+        ],
+
         researchInterests: [
-            "Computer Vision",
-            "Reinforcement Learning",
-            "Edge ML Deployment",
-            "Multi-Agent Systems",
-            "Remote Sensing",
-            "Autonomous Spacecraft",
+            "Self-supervised representation learning and representation geometry",
+            "Reliable computer vision under distribution shift",
+            "Vision foundation models and visual-spatial reasoning",
+            "Reinforcement learning and learning-guided planning",
+            "Edge ML and efficient inference for autonomous systems",
+            "Physical-world AI, remote sensing, and embodied autonomy",
         ],
 
         // Education entries
@@ -91,7 +108,7 @@ const siteConfig = {
                 institution: "Massachusetts Institute of Technology (MIT)",
                 degrees: [
                     {
-                        title: "PhD Aeronautics and Astronautics, minor in AI and Computer Vision",
+                        title: "PhD Spacecraft Systems and Sensors, minor in AI and Computer Vision",
                         years: "2024 - 2025",
                         thesis: "Spacecraft Autonomy through Computer Vision and Onboard Planning",
                     },
@@ -99,7 +116,6 @@ const siteConfig = {
                         title: "SM Aeronautics and Astronautics",
                         years: "2020 - 2022",
                         gpa: "5.0/5.0",
-                        thesis: "Optical Performance and Prototyping of a Liquid Lens Laser Communications Transceiver",
                     },
                 ],
             },
@@ -109,8 +125,8 @@ const siteConfig = {
                 degrees: [
                     {
                         title: "MEng Aeronautical Engineering with a Year Abroad",
+                        years: "2016 - 2020",
                         classification: "First Class Honours",
-                        thesis: "Design of low leakage MEMS valves for spacecraft applications",
                     },
                 ],
             },
@@ -120,30 +136,28 @@ const siteConfig = {
         experience: [
             {
                 company: "Planet Labs",
-                title: "Edge Compute/Machine Learning Engineer",
+                title: "ML Research Engineer",
                 location: "San Francisco, CA",
                 years: "2022 - 2024, 2025 - Present",
                 bullets: [
-                    "Led fine-tuning of DINOv2 vision foundation model on Planet satellite imagery for downstream remote sensing tasks",
-                    "Trained and distilled convolutional vision models for real-time utility estimation of satellite imagery, enabling autonomous imaging prioritization across Planet's Earth-observing constellation",
+                    "Fine-tuned DINOv2 vision transformer (ViT) foundation model on Planet satellite imagery for scene classification and change detection",
+                    "Distilled CLIP-style vision-language models to 8M parameters for lightweight onboard semantic filtering of satellite data",
                     "Designed and implemented algorithms for onboard dynamic task rescheduling using vision model outputs as inputs to a constraint-based planner",
                     "Deployed end-to-end inference pipeline for autonomous satellite operations, including model serving, camera drivers, and integration with the main flight computer",
                     "Architected next-generation onboard compute platform using NVIDIA GPUs as the first hire on the edge compute team",
-                    "Radiation tested NVIDIA Jetson and other ML compute components at UC Davis cyclotron to qualify hardware for space operations",
+                    "Radiation tested NVIDIA Jetson Orin and Thor at UC Davis cyclotron to qualify ML hardware for space operations; Thor results announced at NVIDIA GTC 2026",
                 ],
             },
             {
                 company: "MIT Space Telecommunications, Astronomy and Radiation Laboratory",
-                title: "Research Assistant (PI: Prof. Kerri Cahoy)",
+                title: "PhD Student (PI: Prof. Kerri Cahoy)",
                 location: "Cambridge, MA",
                 years: "2020 - 2025",
                 bullets: [
                     "Trained multi-agent reinforcement learning policies for electromagnetic formation flight, treating spacecraft as collaborative embodied agents performing continuous control in simulation",
                     "Developed reinforcement learning-based lookahead heuristics for dynamic task scheduling, outperforming greedy and analytic baselines on agile Earth-observing satellite constellations",
                     "Designed, trained, and validated deep learning models for cloud segmentation deployed onboard ESA's OPS-SAT satellite; validated on-orbit with real imagery",
-                    "Created labeled dataset and trained edge detection models for ocean front detection from multi-spectral satellite imagery (published in IEEE TGRS)",
-                    "Fine-tuned vision-language models for spatial visual question answering on remote sensing imagery",
-                    "Conducted space environment testing and prototyping with NASA for a novel lasercom pointing and tracking system using liquid lenses, including testing in microgravity on a parabolic flight",
+                    "Created labeled dataset and trained edge detection models for ocean front detection from multi-spectral satellite imagery, published in IEEE TGRS",
                 ],
             },
             {
@@ -152,9 +166,7 @@ const siteConfig = {
                 location: "Mountain View, CA",
                 years: "2021",
                 bullets: [
-                    "Interned under Taara, aiming to provide low-cost free-space optical communications (FSOC) internet access for underdeveloped countries.",
-                    "Conducted communications architecture analysis for optically preamplified direct detection and coherent detection techniques.",
-                    "Modeled integrated photonics components to assess the capabilities of each architecture.",
+                    "Interned under Taara, a free-space optical communications project; conducted architecture analysis and modeled integrated photonics for link budget optimization",
                 ],
             },
             // {
@@ -171,9 +183,9 @@ const siteConfig = {
 
         // Skills
         skills: {
+            mlFrameworksAndTools: "PyTorch, JAX, CUDA, NumPy, SciPy, Pandas, Git, GCP, Docker",
             programmingLanguages: "Python, C, C++",
-            software: "PyTorch, JAX, CUDA",
-            languages: "English (Native), Hindi (Fluent), Korean (Intermediate)",
+            methods: "DL, RL, CV, transformers, LLMs, VLMs, foundation models",
         },
 
         // Projects & extracurricular activities
@@ -205,6 +217,27 @@ const siteConfig = {
 
         publications: [
             {
+                title: "Continuous Attitude Planning for Agile Earth-Observing Satellite Collection Scheduling using Graphs of Convex Sets",
+                authors: "Shreeyam Kacker, Kerri Cahoy",
+                note: "in prep.",
+                sortYear: 2027,
+                selected: true,
+            },
+            {
+                title: "Multi-Agent Reinforcement Learning for Spacecraft Electromagnetic Formation Flight with Transformer Policies",
+                authors: "Josef Biberstein, Shreeyam Kacker, Kerri Cahoy, Sertac Karaman",
+                note: "in prep.; targeting ICRA 2027",
+                sortYear: 2027,
+                selected: true,
+            },
+            {
+                title: "Gaussian KL-Matching Regularization for Self-Supervised Learning",
+                authors: "Shreeyam Kacker, Miles Shepherd, Kerri Cahoy",
+                note: "in prep.",
+                sortYear: 2027,
+                selected: true,
+            },
+            {
                 title: "Folded Lightweight Actuator Positioning System (FLAPS)",
                 authors: "Paula do Vale Pereira, Katherine S Chun, Mario M Contreras, Charles Lindsay, Shreeyam Kacker, Raymond Huffman, Christian Haughwout, Kerri Cahoy",
                 note: "33rd Annual AIAA/USU Conference on Small Satellites",
@@ -219,11 +252,12 @@ const siteConfig = {
                 url: "https://www.spiedigitallibrary.org/conference-proceedings-of-spie/11678/116780T/Link-analysis-for-a-liquid-lens-beam-steering-system-the/10.1117/12.2582607.short",
             },
             {
-                title: "On-orbit rule-based and deep learning image segmentation strategies",
-                authors: "Shreeyam Kacker, Alex Meredith, Joe Kusters, Hannah Tomio, Violet Felt, Kerri Cahoy",
+                title: "On-orbit rule-based and deep learning image segmentation strategies for the BeaverCube-2 mission",
+                authors: "Shreeyam Kacker, Alex Meredith, Violet Felt, Joe Kusters, Hannah Tomio, Kerri Cahoy",
                 note: "AIAA SCITECH 2022 Forum",
                 year: 2022,
                 url: "https://arc.aiaa.org/doi/10.2514/6.2022-0646",
+                selected: true,
             },
             {
                 title: "MOEMS-based lens-assisted beam steering for free-space optical communications",
@@ -254,11 +288,12 @@ const siteConfig = {
                 url: "https://digitalcommons.usu.edu/smallsat/2022/all2022/87/",
             },
             {
-                title: "Machine Learning Image Processing Algorithms onboard OPS-SAT",
+                title: "Machine Learning Image Processing Algorithms Onboard OPS-SAT",
                 authors: "Shreeyam Kacker, Alex Meredith, Kerri Cahoy, Georges Labreche",
                 note: "36th Annual AIAA/USU Conference on Small Satellites",
                 year: 2022,
                 url: "https://digitalcommons.usu.edu/smallsat/2022/all2022/65/",
+                selected: true,
             },
             {
                 title: "Commercially Available Imaging Payloads for CubeSat Earth Observation Missions",
@@ -287,6 +322,7 @@ const siteConfig = {
                 note: "IEEE Transactions on Geoscience and Remote Sensing 61",
                 year: 2023,
                 url: "https://ieeexplore.ieee.org/document/10124788",
+                selected: true,
             },
             {
                 title: "Optical Performance of Commercial Liquid Lens Assemblies in Microgravity",
@@ -329,20 +365,23 @@ const siteConfig = {
                 note: "39th Annual AIAA/USU Conference on Small Satellites",
                 year: 2025,
                 url: "https://digitalcommons.usu.edu/",
+                selected: true,
             },
             {
                 title: "Deep Reinforcement Learning for Multi-Agent Spacecraft Electromagnetic Formation Flight",
-                authors: "J Biberstein, Shreeyam Kacker, Kerri Cahoy, S Karaman",
-                note: "International Conference on Space Robotics 2025",
+                authors: "Josef Biberstein, Shreeyam Kacker, Kerri Cahoy, Sertac Karaman",
+                note: "International Conference on Space Robotics",
                 year: 2025,
-                url: "",
+                url: "https://ieeexplore.ieee.org/abstract/document/11436505/",
+                selected: true,
             },
             {
-                title: "Differentiable Constellation Design via Relaxed Coverage and Revisit Objectives",
+                title: "Differentiable Satellite Constellation Design via Relaxed Coverage and Revisit Objectives",
                 authors: "Shreeyam Kacker, Kerri Cahoy",
-                note: "in prep.",
+                note: "arXiv:2604.19062",
                 year: 2026,
-                url: "",
+                url: "https://arxiv.org/abs/2604.19062",
+                selected: true,
             },
         ],
     },
