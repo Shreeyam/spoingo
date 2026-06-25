@@ -18,6 +18,7 @@ function ResearchMedia({ media }) {
                 loop
                 muted
                 playsInline
+                preload="metadata"
                 aria-label={media.alt || undefined}
             >
                 <source src={media.src} />
