@@ -20,8 +20,9 @@ ssh -T "$HOST" bash <<REMOTE
 set -euo pipefail
 cd "$DIR"
 
-echo "→ git pull"
-sudo -u "$USER" -H git pull --ff-only
+echo "→ syncing to origin/main (discarding any local drift)"
+sudo -u "$USER" -H git fetch origin main
+sudo -u "$USER" -H git reset --hard origin/main
 
 echo "→ npm ci"
 sudo -u "$USER" -H npm ci
