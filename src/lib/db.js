@@ -24,7 +24,7 @@ function getPreview(content, maxLength = 150) {
   return plain.length > maxLength ? plain.slice(0, maxLength) + '...' : plain;
 }
 
-const dbPath = path.resolve(process.cwd(), 'data', 'blog.db');
+const dbPath = path.resolve(process.cwd(), 'data', process.env.DB_FILE || 'blog.db');
 const db = new Database(dbPath);
 
 // Create posts table with thumbnail and draft mode.

@@ -1,20 +1,40 @@
 #!/usr/bin/env bash
 # One-command deploy to the droplet. Run from your laptop:
-#   npm run deploy
-# Override defaults with env vars if anything moves:
-#   SPOINGO_HOST=root@165.227.89.12   SSH target
-#   SPOINGO_DIR=/var/www/shreey.am    remote app dir
-#   SPOINGO_USER=www                  user that owns the app dir + runs pm2
-#   SPOINGO_PM2=shreey.am             pm2 process name
+#   npm run deploy            # deploys the default tenant (shreeyam)
+#   npm run deploy maya       # deploys a named tenant
+#
+# Add new tenants by registering them in the manifest below AND in
+# src/config/siteConfig.js. Each tenant lives in its own clone on the
+# droplet with its own .env (TENANT, DB_FILE, PORT, AUTH_SECRET) and its
+# own pm2 process.
 
 set -euo pipefail
 
-HOST="${SPOINGO_HOST:-root@165.227.89.12}"
-DIR="${SPOINGO_DIR:-/var/www/shreey.am}"
-USER="${SPOINGO_USER:-www}"
-PM2_NAME="${SPOINGO_PM2:-shreey.am}"
+TENANT="${1:-shreeyam}"
 
-echo "→ deploying to $HOST:$DIR (app user=$USER, pm2=$PM2_NAME)"
+case "$TENANT" in
+    shreeyam)
+        HOST="${SPOINGO_HOST:-root@165.227.89.12}"
+        DIR="${SPOINGO_DIR:-/var/www/shreey.am}"
+        USER="${SPOINGO_USER:-www}"
+        PM2_NAME="${SPOINGO_PM2:-shreey.am}"
+        ;;
+    # Example for a future tenant — uncomment and customize once the
+    # clone exists on the droplet and the pm2 process is registered.
+    # maya)
+    #     HOST="${SPOINGO_HOST:-root@165.227.89.12}"
+    #     DIR="${SPOINGO_DIR:-/var/www/maya.example.com}"
+    #     USER="${SPOINGO_USER:-www}"
+    #     PM2_NAME="${SPOINGO_PM2:-maya.example.com}"
+    #     ;;
+    *)
+        echo "Unknown tenant: $TENANT" >&2
+        echo "Register it in scripts/deploy.sh and src/config/siteConfig.js." >&2
+        exit 1
+        ;;
+esac
+
+echo "→ deploying tenant '$TENANT' to $HOST:$DIR (app user=$USER, pm2=$PM2_NAME)"
 
 ssh -T "$HOST" bash <<REMOTE
 set -euo pipefail
@@ -34,4 +54,4 @@ echo "→ pm2 reload $PM2_NAME"
 sudo -u "$USER" -H pm2 reload "$PM2_NAME" --update-env
 REMOTE
 
-echo "✓ done"
+echo "✓ done — tenant '$TENANT' updated"
