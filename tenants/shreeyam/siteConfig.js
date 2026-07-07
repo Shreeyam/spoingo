@@ -203,6 +203,7 @@ const siteConfig = {
 
         // Awards
         awards: [
+            "First recipient of the Planet PhD Fellowship (2024)",
             "Best Paper Award in Small Satellites at AIAA SciTech Forum (2022)",
             "Imperial College London Dean's List (2019)",
         ],
