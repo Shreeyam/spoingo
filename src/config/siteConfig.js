@@ -1,7 +1,9 @@
 import shreeyam from '../../tenants/shreeyam/siteConfig.js';
+import marie from '../../tenants/marie/siteConfig.js';
 
 const tenants = {
     shreeyam,
+    marie,
 };
 
 const tenantName = process.env.TENANT || 'shreeyam';

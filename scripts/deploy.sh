@@ -19,14 +19,12 @@ case "$TENANT" in
         USER="${SPOINGO_USER:-www}"
         PM2_NAME="${SPOINGO_PM2:-shreey.am}"
         ;;
-    # Example for a future tenant — uncomment and customize once the
-    # clone exists on the droplet and the pm2 process is registered.
-    # maya)
-    #     HOST="${SPOINGO_HOST:-root@165.227.89.12}"
-    #     DIR="${SPOINGO_DIR:-/var/www/maya.example.com}"
-    #     USER="${SPOINGO_USER:-www}"
-    #     PM2_NAME="${SPOINGO_PM2:-maya.example.com}"
-    #     ;;
+    marie)
+        HOST="${SPOINGO_HOST:-root@165.227.89.12}"
+        DIR="${SPOINGO_DIR:-/var/www/typicalatom.com}"
+        USER="${SPOINGO_USER:-www}"
+        PM2_NAME="${SPOINGO_PM2:-typicalatom.com}"
+        ;;
     *)
         echo "Unknown tenant: $TENANT" >&2
         echo "Register it in scripts/deploy.sh and src/config/siteConfig.js." >&2
