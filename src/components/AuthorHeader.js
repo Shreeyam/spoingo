@@ -32,11 +32,7 @@ export default function AuthorHeader() {
                     </p>
                 )}
                 <p className="text-sm text-muted-foreground">
-                    {author.currentJob}
-                    {' · '}
-                    {author.education}
-                    {' · '}
-                    <span>{author.email}</span>
+                    {[author.currentJob, author.education, author.email].filter(Boolean).join(' · ')}
                 </p>
                 <p className="text-sm">
                     {metaLinks.map((link, i) => (

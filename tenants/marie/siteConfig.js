@@ -1,10 +1,5 @@
 /**
  * Site Configuration — marie (typicalatom.com)
- *
- * Edit this file to customize the blog. All personal information,
- * social links, CV data, and site metadata are configured here.
- *
- * This started as a minimal scaffold — fill in the real content.
  */
 
 const siteConfig = {
@@ -12,8 +7,8 @@ const siteConfig = {
     // SITE METADATA
     // ===================
     site: {
-        title: "Marie",
-        description: "Marie",
+        title: "Typical Atom",
+        description: "A blog about radiation and brutalist architecture",
         language: "en",
     },
 
@@ -21,13 +16,13 @@ const siteConfig = {
     // PERSONAL INFORMATION
     // ===================
     author: {
-        name: "Marie",
+        name: "Marie Barton",
         firstName: "Marie",
-        avatar: "/me.jpg",
-        location: "",
+        avatar: "/marie.jpg",
+        location: "San Jose, California",
         currentJob: "",
-        education: "",
-        email: "",
+        education: "San Jose State University",
+        email: "typicalatom [at] gmail [dot] com",
     },
 
     // ===================
@@ -35,7 +30,7 @@ const siteConfig = {
     // ===================
     // Set a link to null or remove it to hide that social link
     social: {
-        linkedin: null,
+        linkedin: "https://www.linkedin.com/in/mariebarton/",
         github: null,
         googleScholar: null,
         orcid: null,
@@ -49,7 +44,7 @@ const siteConfig = {
     // FOOTER
     // ===================
     footer: {
-        copyright: "Marie",
+        copyright: "Typical Atom",
         poweredBy: {
             name: "Spoingo",
             url: "https://www.github.com/Shreeyam/spoingo",
@@ -59,12 +54,12 @@ const siteConfig = {
     // ===================
     // BIOGRAPHY
     // ===================
-    // Use HTML for formatting.
+    // Use HTML for formatting and links
     biography: {
-        intro: "",
+        intro: "Hey, I'm Marie. I love radiation, brutalist architecture, and abandoned buildings.",
 
         paragraphs: [
-            `Hi, I'm Marie.`,
+            "I started this blog to discuss how humans interact with radiation and the nuclear horizon. There will also be reports on Brutalist buildings from around the world and any other things that float into my realm of interest.",
         ],
     },
 
@@ -72,18 +67,24 @@ const siteConfig = {
     // CV DATA
     // ===================
     cv: {
-        selectedResearch: [],
-
-        researchInterests: [],
-
         // Education entries
-        education: [],
+        education: [
+            {
+                institution: "San Jose State University",
+                years: "2023 - 2026",
+                degrees: [
+                    { title: "B.A., Anthropology" },
+                ],
+            },
+        ],
 
         // Work experience entries
         experience: [],
 
         // Skills
-        skills: {},
+        skills: {
+            languages: "English",
+        },
 
         // Projects & extracurricular activities
         projects: [],
@@ -95,8 +96,9 @@ const siteConfig = {
         invitedTalks: [],
 
         // Publications - author name to highlight
-        highlightAuthor: "Marie",
+        highlightAuthor: "Marie Barton",
 
+        // Publications
         publications: [],
     },
 };

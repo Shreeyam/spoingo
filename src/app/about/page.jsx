@@ -77,6 +77,7 @@ export default function About() {
                             {cv.skills.mlFrameworksAndTools && <p><strong>ML Frameworks & Tools:</strong> {cv.skills.mlFrameworksAndTools}</p>}
                             {cv.skills.programmingLanguages && <p><strong>Programming Languages:</strong> {cv.skills.programmingLanguages}</p>}
                             {cv.skills.methods && <p><strong>Methods:</strong> {cv.skills.methods}</p>}
+                            {cv.skills.languages && <p><strong>Languages:</strong> {cv.skills.languages}</p>}
                         </div>
                     </PageSection>
                 )}
