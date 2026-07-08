@@ -1,6 +1,7 @@
 // src/lib/db.js
 import Database from 'better-sqlite3';
 import path from 'path';
+import fs from 'fs';
 
 // Helper function to remove markdown syntax
 function stripMarkdown(markdown) {
@@ -25,6 +26,9 @@ function getPreview(content, maxLength = 150) {
 }
 
 const dbPath = path.resolve(process.cwd(), 'data', process.env.DB_FILE || 'blog.db');
+// data/ isn't tracked in git, so a fresh clone won't have it; better-sqlite3
+// won't create the parent dir and would throw on open. Ensure it exists.
+fs.mkdirSync(path.dirname(dbPath), { recursive: true });
 const db = new Database(dbPath);
 
 // Create posts table with thumbnail and draft mode.
