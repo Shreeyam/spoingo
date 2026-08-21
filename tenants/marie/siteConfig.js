@@ -8,7 +8,7 @@ const siteConfig = {
     // ===================
     site: {
         title: "Typical Atom",
-        description: "A blog about radiation and brutalist architecture",
+        description: "A blog about radiation",
         language: "en",
     },
 
@@ -19,7 +19,7 @@ const siteConfig = {
         name: "Marie Barton",
         firstName: "Marie",
         avatar: "/marie.jpg",
-        location: "San Jose, California",
+        location: "Palo Alto, California",
         currentJob: "",
         education: "San Jose State University",
         email: "typicalatom [at] gmail [dot] com",
@@ -56,10 +56,11 @@ const siteConfig = {
     // ===================
     // Use HTML for formatting and links
     biography: {
-        intro: "Hey, I'm Marie. I love radiation, brutalist architecture, and abandoned buildings.",
+        intro: "Hello, I'm Marie. I love radiation.",
 
         paragraphs: [
-            "I started this blog to discuss how humans interact with radiation and the nuclear horizon. There will also be reports on Brutalist buildings from around the world and any other things that float into my realm of interest.",
+            "I am fascinated by radiation and the history around interactions with radioactive materials. The other half of this blog will be dedicated to brutalist architecture and abandoned buildings.",
+            "I am an anthropology graduate. I am currently studying to apply to law school.",
         ],
     },
 
@@ -73,7 +74,7 @@ const siteConfig = {
                 institution: "San Jose State University",
                 years: "2023 - 2026",
                 degrees: [
-                    { title: "B.A., Anthropology" },
+                    { title: "B.A., Anthropology, Magna Cum Laude" },
                 ],
             },
         ],
@@ -84,13 +85,29 @@ const siteConfig = {
         // Skills
         skills: {
             languages: "English",
+            research: [
+                "Archival research",
+                "Qualitative analysis",
+                "Ethnographic research",
+                "Site documentation",
+            ],
+            subjectAreas: [
+                "Radiological disaster studies",
+                "Nuclear history",
+                "Radioactive antiques",
+                "Urban decay",
+                "Soviet architecture",
+            ],
         },
 
         // Projects & extracurricular activities
         projects: [],
 
         // Awards
-        awards: [],
+        awards: [
+            "President's Scholar, San Jose State University (2023 - 2026)",
+            "Phi Kappa Phi, San Jose State University (inducted 2026)",
+        ],
 
         // Invited talks
         invitedTalks: [],

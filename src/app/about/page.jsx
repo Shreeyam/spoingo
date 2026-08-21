@@ -6,11 +6,25 @@ import PageSection from '@/components/PageSection';
 import PublicationCard from '@/components/PublicationCard';
 import siteConfig from '@/config/siteConfig';
 
+// Skill category keys whose Title Case derivation needs a hand
+const SKILL_LABELS = {
+    mlFrameworksAndTools: 'ML Frameworks & Tools',
+};
+
+// "subjectAreas" -> "Subject Areas"
+const skillLabel = (key) =>
+    SKILL_LABELS[key] || key.replace(/([A-Z])/g, ' $1').replace(/^./, (c) => c.toUpperCase());
+
+// A category is either a string or a list of strings
+const skillValue = (value) => (Array.isArray(value) ? value.join(', ') : value);
+const hasSkillValue = (value) => (Array.isArray(value) ? value.length > 0 : Boolean(value));
+
 export default function About() {
     const { biography, cv } = siteConfig;
     const publications = [...(cv?.publications || [])]
         .sort((a, b) => (b.sortYear || b.year || 0) - (a.sortYear || a.year || 0));
     const otherParagraphs = biography.paragraphs.slice(2);
+    const skillEntries = Object.entries(cv?.skills || {}).filter(([, value]) => hasSkillValue(value));
 
     return (
         <Layout>
@@ -71,14 +85,23 @@ export default function About() {
                     </PageSection>
                 )}
 
-                {cv?.skills && (
+                {skillEntries.length > 0 && (
                     <PageSection title="Skills">
                         <div className="space-y-2 text-[0.95rem] leading-relaxed text-foreground/80">
-                            {cv.skills.mlFrameworksAndTools && <p><strong>ML Frameworks & Tools:</strong> {cv.skills.mlFrameworksAndTools}</p>}
-                            {cv.skills.programmingLanguages && <p><strong>Programming Languages:</strong> {cv.skills.programmingLanguages}</p>}
-                            {cv.skills.methods && <p><strong>Methods:</strong> {cv.skills.methods}</p>}
-                            {cv.skills.languages && <p><strong>Languages:</strong> {cv.skills.languages}</p>}
+                            {skillEntries.map(([key, value]) => (
+                                <p key={key}><strong>{skillLabel(key)}:</strong> {skillValue(value)}</p>
+                            ))}
                         </div>
+                    </PageSection>
+                )}
+
+                {cv?.awards?.length > 0 && (
+                    <PageSection title="Awards">
+                        <ul className="list-disc list-outside ml-5 space-y-2 text-[0.95rem] leading-relaxed text-foreground/80">
+                            {cv.awards.map((award) => (
+                                <li key={award}>{award}</li>
+                            ))}
+                        </ul>
                     </PageSection>
                 )}
 
