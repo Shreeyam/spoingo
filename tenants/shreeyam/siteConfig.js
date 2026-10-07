@@ -11,7 +11,7 @@ const siteConfig = {
     // ===================
     site: {
         title: "Shreeyam Kacker",
-        description: "Shreeyam Kacker",
+        description: "Shreeyam Kacker is a machine learning researcher working on learning-based perception and planning under uncertainty for autonomous systems.",
         language: "en",
     },
 
@@ -64,7 +64,7 @@ const siteConfig = {
         paragraphs: [
             `Hey, I'm Shreeyam. I am a machine learning researcher working on learning-based perception and planning under uncertainty for autonomous systems. I received my PhD from MIT's <a href="https://aeroastro.mit.edu/starlab/" target="_blank" class="underline hover:text-primary">STAR Lab</a>, with PI Prof. Kerri Cahoy, where my research focused on autonomous tasking formulations for Earth-observing satellites using computer vision, onboard planning, and edge ML.`,
 
-            `At Planet, I work on onboard ML and edge compute and autonomy for high resolution Earth-observing satellites. My previous experience also includes photonics at <a href="https://x.company/" target="_blank" class="underline hover:text-primary">X, the moonshot factory</a> (formerly Google [x]).`,
+            `At Planet, I work on onboard ML, edge compute, and autonomy for high-resolution Earth-observing satellites. My previous experience also includes photonics at <a href="https://x.company/" target="_blank" class="underline hover:text-primary">X, the moonshot factory</a> (formerly Google[x]).`,
 
             `I started this blog for technical sewing projects. There are countless blogs from the early to mid 2010s that have been invaluable to my sewing journey, and I hope to contribute to that body of knowledge. I might occasionally write about fashion, research, or other topics also.`,
 
@@ -120,7 +120,6 @@ const siteConfig = {
             },
             {
                 institution: "Imperial College London",
-                years: "2016 - 2020",
                 degrees: [
                     {
                         title: "MEng Aeronautical Engineering with a Year Abroad",
@@ -184,7 +183,7 @@ const siteConfig = {
         skills: {
             mlFrameworksAndTools: "PyTorch, JAX, CUDA, NumPy, SciPy, Pandas, Git, GCP, Docker",
             programmingLanguages: "Python, C, C++",
-            methods: "DL, RL, CV, transformers, LLMs, VLMs, foundation models",
+            methods: "DL, RL, CV, optimization, transformers, LLMs, VLMs, foundation models",
         },
 
         // Projects & extracurricular activities
