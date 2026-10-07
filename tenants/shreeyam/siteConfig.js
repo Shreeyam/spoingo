@@ -62,7 +62,7 @@ const siteConfig = {
         intro: "",
 
         paragraphs: [
-            `Hey, I'm Shreeyam. I am a machine learning researcher working on representation learning and planning for autonomous systems. I received my PhD from MIT's <a href="https://aeroastro.mit.edu/starlab/" target="_blank" class="underline hover:text-primary">STAR Lab</a>, with PI Prof. Kerri Cahoy, where my research focused on autonomous tasking formulations for Earth-observing satellites using computer vision, onboard planning, and edge ML.`,
+            `Hey, I'm Shreeyam. I am a machine learning researcher working on learning-based perception and planning under uncertainty for autonomous systems. I received my PhD from MIT's <a href="https://aeroastro.mit.edu/starlab/" target="_blank" class="underline hover:text-primary">STAR Lab</a>, with PI Prof. Kerri Cahoy, where my research focused on autonomous tasking formulations for Earth-observing satellites using computer vision, onboard planning, and edge ML.`,
 
             `At Planet, I work on onboard ML and edge compute and autonomy for high resolution Earth-observing satellites. My previous experience also includes photonics at <a href="https://x.company/" target="_blank" class="underline hover:text-primary">X, the moonshot factory</a> (formerly Google [x]).`,
 
@@ -94,10 +94,9 @@ const siteConfig = {
         ],
 
         researchInterests: [
-            "Self-supervised representation learning and representation geometry",
             "Reliable computer vision under distribution shift",
             "Vision foundation models and visual-spatial reasoning",
-            "Reinforcement learning and learning-guided planning",
+            "Reinforcement learning and planning under uncertainty",
             "Edge ML and efficient inference for autonomous systems",
             "Physical-world AI, remote sensing, and embodied autonomy",
         ],
@@ -228,13 +227,6 @@ const siteConfig = {
                 title: "Multi-Agent Reinforcement Learning for Spacecraft Electromagnetic Formation Flight with Transformer Policies",
                 authors: "Josef Biberstein, Shreeyam Kacker, Kerri Cahoy, Sertac Karaman",
                 note: "in prep.; targeting ICRA 2027",
-                sortYear: 2027,
-                selected: true,
-            },
-            {
-                title: "Gaussian KL-Matching Regularization for Self-Supervised Learning",
-                authors: "Shreeyam Kacker, Miles Shepherd, Kerri Cahoy",
-                note: "in prep.",
                 sortYear: 2027,
                 selected: true,
             },
