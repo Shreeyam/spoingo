@@ -56,11 +56,12 @@ const siteConfig = {
     // ===================
     // Use HTML for formatting and links
     biography: {
-        intro: "Hello, I'm Marie. I love radiation.",
+        intro: "Hello, I'm Marie. I write about radiation.",
 
         paragraphs: [
-            "I am fascinated by radiation and the history around interactions with radioactive materials. The other half of this blog will be dedicated to brutalist architecture and abandoned buildings.",
-            "I am an anthropology graduate. I am currently studying to apply to law school.",
+            "I am fascinated by radiation and the history around interactions with radioactive materials. This blog will also cover brutalist architecture and abandoned buildings.",
+            "I am an anthropology graduate preparing to apply to law school.",
+            "If you collect, study, or just like radioactive consumer items or antiques, email me.",
         ],
     },
 
