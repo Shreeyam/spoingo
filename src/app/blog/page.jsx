@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Layout from '@/components/Layout';
 import { getPostsPaginated } from '@/lib/db';
+import siteConfig from '@/config/siteConfig';
 
 export const revalidate = 300;
 
@@ -19,9 +20,11 @@ export default async function BlogPage() {
                     <h1 className="text-3xl sm:text-4xl font-bold tracking-tight">
                         Blog
                     </h1>
-                    <p className="text-lg leading-relaxed text-foreground/90">
-                        Notes on technical sewing, research, software, and other projects.
-                    </p>
+                    {siteConfig.site.blogTagline && (
+                        <p className="text-lg leading-relaxed text-foreground/90">
+                            {siteConfig.site.blogTagline}
+                        </p>
+                    )}
                 </header>
 
                 {posts.length > 0 ? (

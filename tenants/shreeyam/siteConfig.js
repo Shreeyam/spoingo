@@ -13,6 +13,8 @@ const siteConfig = {
         title: "Shreeyam Kacker",
         description: "Shreeyam Kacker is a machine learning researcher working on learning-based perception and planning under uncertainty for autonomous systems.",
         language: "en",
+        // Shown under the "Blog" heading on /blog
+        blogTagline: "Notes on technical sewing, research, software, and other projects.",
     },
 
     // ===================

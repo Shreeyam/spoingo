@@ -10,6 +10,8 @@ const siteConfig = {
         title: "Typical Atom",
         description: "A blog about radiation",
         language: "en",
+        // Shown under the "Blog" heading on /blog
+        blogTagline: "Notes on radiation, nuclear history, brutalist architecture, and abandoned buildings.",
     },
 
     // ===================
