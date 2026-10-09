@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import {
     Popover,
@@ -9,15 +9,17 @@ import {
 } from '@/components/ui/popover';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { ImageIcon, Search, X, RefreshCcw } from 'lucide-react';
+import { ImageIcon, Search, X, RefreshCcw, UploadCloud, ExternalLink } from 'lucide-react';
 import { ScrollArea } from '@/components/ui/scroll-area';
-import Link from 'next/link';
 
 export default function ImageSelector({ value, onChange, title = "Select Image" }) {
     const [images, setImages] = useState(null);
     const [searchTerm, setSearchTerm] = useState('');
     const [isLoading, setIsLoading] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
+    const [isUploading, setIsUploading] = useState(false);
+    const [uploadError, setUploadError] = useState('');
+    const fileInputRef = useRef(null);
 
     // Fetch images when popover opens
     useEffect(() => {
@@ -51,6 +53,38 @@ export default function ImageSelector({ value, onChange, title = "Select Image" 
         setIsOpen(false);
     };
 
+    // Upload straight from the picker and select the result, so adding an
+    // image never navigates away from (and loses) the post being edited.
+    const handleUpload = async (e) => {
+        const file = e.target.files[0];
+        e.target.value = null;
+        if (!file) return;
+        setIsUploading(true);
+        setUploadError('');
+        try {
+            const formData = new FormData();
+            formData.append('file', file);
+            const res = await fetch('/api/images/upload', {
+                method: 'POST',
+                body: formData,
+            });
+            const body = await res.json();
+            if (!res.ok) {
+                setUploadError(res.status === 409
+                    ? 'An image with that name already exists. Rename the file or pick it from the list.'
+                    : `Upload failed: ${body.error}`);
+                return;
+            }
+            setImages(null); // refetch next time the picker opens
+            handleImageSelect(body.url);
+        } catch (error) {
+            console.error('Error uploading image:', error);
+            setUploadError('Upload failed');
+        } finally {
+            setIsUploading(false);
+        }
+    };
+
     const handleClearImage = (e) => {
         e.stopPropagation();
         onChange('');
@@ -82,6 +116,23 @@ export default function ImageSelector({ value, onChange, title = "Select Image" 
             </PopoverTrigger>
             <PopoverContent className="w-80">
                 <div className="space-y-4">
+                    <input
+                        ref={fileInputRef}
+                        type="file"
+                        accept="image/*"
+                        className="hidden"
+                        onChange={handleUpload}
+                    />
+                    <Button
+                        className="w-full"
+                        onClick={() => fileInputRef.current.click()}
+                        disabled={isUploading}
+                    >
+                        <UploadCloud size={16} /> {isUploading ? 'Uploading...' : 'Upload new image'}
+                    </Button>
+                    {uploadError && (
+                        <p className="text-sm text-red-600">{uploadError}</p>
+                    )}
                     <div className="flex items-center space-x-2">
                         <Search className="h-4 w-4 text-gray-500" />
                         <Input
@@ -129,8 +180,10 @@ export default function ImageSelector({ value, onChange, title = "Select Image" 
                             </div>
                         </ScrollArea>
                     )}
-                    <Button variant="secondary" className="w-full" onClick={() => setIsOpen(false)}>
-                        <Link href="/cms">Manage Images</Link>
+                    <Button variant="secondary" className="w-full" asChild>
+                        <a href="/cms" target="_blank" rel="noopener">
+                            Manage Images <ExternalLink size={16} />
+                        </a>
                     </Button>
                     <Button variant="secondary" className="w-full" onClick={() => setIsOpen(false)}>
                         Close

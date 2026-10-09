@@ -3,11 +3,12 @@ import ReactMarkdown from 'react-markdown';
 import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from '@/components/ui/carousel';
 import { ExternalLink } from 'lucide-react';
 import smartypants from 'remark-smartypants';
+import remarkSupSub from '@/lib/remarkSupSub';
 
 const CustomMarkdown = ({ markdown }) => {
     return (
         <ReactMarkdown
-            remarkPlugins={[smartypants]}
+            remarkPlugins={[remarkSupSub, smartypants]}
             components={{
                 // Custom renderer for anchor tags.
                 a: ({ node, children, ...props }) => (

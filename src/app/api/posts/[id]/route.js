@@ -46,7 +46,7 @@ export async function PUT(request, { params }) {
 
 export async function DELETE(request, { params }) {
     try {
-        const id = params.id;
+        const { id } = await params;
         const post = getPostById(id);
 
         if (!post) {
