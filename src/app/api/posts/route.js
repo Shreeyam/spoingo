@@ -23,7 +23,7 @@ export async function GET(request) {
     const { searchParams } = new URL(request.url);
     const offset = Number(searchParams.get('offset')) || 0;
     const limit = Number(searchParams.get('limit')) || 5;
-    const posts = getPostsPaginated({ limit, offset });
+    const posts = getPostsPaginated(offset, limit);
     return new Response(JSON.stringify(posts), {
         headers: { 'Content-Type': 'application/json' },
     });
