@@ -3,9 +3,8 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { getPostById, getPostBySlug, getPostIDs, getPostMetadataByID, getPostMetadataBySlug } from '@/lib/db';
 import Layout from '@/components/Layout';
-import { Dot, User, MoveLeft, MoveRight } from 'lucide-react';
+import PageArticle from '@/components/PageArticle';
 import CustomMarkdown from '@/components/ui/custommarkdown';
-import { Button } from '@/components/ui/button';
 
 export async function generateMetadata({ params }) {
     const { idorslug } = await params;
@@ -54,60 +53,40 @@ export default async function PostPage({ params }) {
 
     return (
         <Layout>
-            <div className="max-w-5xl mx-auto px-4 py-8">
-
+            <PageArticle>
                 {/* Title and meta section */}
-                <div className="mb-8 text-center">
-                    <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4 leading-tight">{post.title}</h1>
-                    <div className="flex flex-wrap items-center justify-center text-sm text-muted-foreground gap-4">
-                        {post.author && (
-                            <div className="flex items-center">
-                                <User size={16} className="mr-1" />
-                                <span>{post.author}</span>
-                            </div>
-                        )}
-                        <div className="flex items-center">
-                            <span title={publishedDate}>{publishedDate.toISOString().split("T")[0]}</span>
-                            <Dot size={16} className="mx-1" />
-                            <span>{readingTime} min read</span>
-                        </div>
-                    </div>
-                </div>
+                <header className="space-y-3">
+                    <h1 className="text-3xl sm:text-4xl font-bold tracking-tight">{post.title}</h1>
+                    <p className="text-sm text-muted-foreground">
+                        {post.author && <>{post.author} · </>}
+                        <span title={publishedDate}>{publishedDate.toISOString().split("T")[0]}</span>
+                        {' · '}{readingTime} min read
+                    </p>
+                </header>
 
                 {/* Main content */}
-                <article className="prose lg:prose-lg xl:prose-xl mx-auto prose-headings:font-bold prose-headings:text-foreground prose-p:text-foreground">
+                <article className="prose text-[1.0625rem] leading-relaxed prose-headings:font-bold prose-headings:text-foreground prose-p:text-foreground/90">
                     <CustomMarkdown markdown={post.content} />
                 </article>
 
                 {/* Post navigation */}
-                <div className="flex justify-between items-center">
+                <nav className="flex justify-between text-sm">
                     {prevPostID ? (
-                        <Link href={`/posts/${prevPostID}`} passHref>
-                            <Button variant="ghost" className="flex items-center text-left group">
-                                <MoveLeft size={20} className="mr-2 group-hover:transform group-hover:-translate-x-1 transition-transform" />
-                                <div>
-                                    <div className="text-xs text-muted-foreground">Previous</div>
-                                </div>
-                            </Button>
+                        <Link href={`/posts/${prevPostID}`} className="hover:underline underline-offset-2">
+                            ← Previous
                         </Link>
                     ) : (
-                        <div className="invisible">Placeholder</div>
+                        <span />
                     )}
-
                     {nextPostID ? (
-                        <Link href={`/posts/${nextPostID}`} passHref>
-                            <Button variant="ghost" className="flex items-center text-right group">
-                                <div>
-                                    <div className="text-xs text-muted-foreground">Next</div>
-                                </div>
-                                <MoveRight size={20} className="ml-2 group-hover:transform group-hover:translate-x-1 transition-transform" />
-                            </Button>
+                        <Link href={`/posts/${nextPostID}`} className="hover:underline underline-offset-2">
+                            Next →
                         </Link>
                     ) : (
-                        <div className="invisible">Placeholder</div>
+                        <span />
                     )}
-                </div>
-            </div>
+                </nav>
+            </PageArticle>
         </Layout>
     );
 }
